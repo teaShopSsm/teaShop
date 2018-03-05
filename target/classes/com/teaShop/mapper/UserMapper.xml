@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.teaShop.dao.UserMapper">
+	<!-- 查询是否存在输入的账号 -->
+	<select id="isHave" parameterType="java.lang.String" resultType="java.lang.Integer">
+		select count(1) from user where user_name = #{username}
+	</select>
+	
+	<!-- 验证账号密码是否存在 -->
+	<select id="login" resultType="java.lang.Integer">
+		select count(1) from user where user_name=#{username} and password=#{password}
+	</select>
+  <select id="QueryManager" resultType="com.teaShop.bean.User">
+  	select *
+  	from user
+  	limit #{pageNumber},#{pageSize}
+  </select>
+  
+  <select id="QueryUserCount" resultType="int">
+  	select count(user_id)
+  	from user
+  </select>
+  
+  <insert id="confirmNewUser" parameterType="com.teaShop.bean.User" useGeneratedKeys="true" keyProperty="userId" >
+  	insert into user(user_name,password,create_date,email,phone,name)
+ 	values(#{userName},#{password},#{createDate},#{email},#{phone},#{name})	
+  </insert>
+  
+  <select id="SelectUserInfoByid" parameterType="int" resultType="com.teaShop.bean.User">
+  	select user_name,name,phone,email
+  	from user
+  	where user_id=#{userId}
+  </select>
+  
+  <update id="confirmmodifyUser" parameterType="com.teaShop.bean.User" >
+  	update user
+ 	set user_name=#{userName},email=#{email},phone=#{phone},name=#{name}
+ 	where user_id=#{userId}
+  </update>
+  
+  <delete id="deleteUser" parameterType="int">
+  		DELETE 
+    	FROM user
+    	where user_id=#{userId}
+  </delete>
+</mapper>

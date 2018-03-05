@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.teaShop.dao.ColdStorageTenantMapper">
+  
+  <!-- 查询所有租户信息 -->
+  <select id="getAll" resultType="com.teaShop.bean.ColdStorageTenant">
+  		select * from cold_storage_tenant
+  </select>
+  
+  <!-- 查询用户id是否存在 -->
+  <select id="isRepeat" parameterType="String" resultType="java.lang.Integer">
+  	select count(1) from cold_storage_tenant where renter_id=#{rentId}
+  </select>
+  
+   <!-- 获取修改人员的信息 -->
+  <select id="getOneByRenterId" parameterType="String" resultType="com.teaShop.bean.ColdStorageTenant">
+  	select * from cold_storage_tenant where renter_id=#{renterId}
+  </select>
+  
+  <!-- 新增 -->
+  <insert id="addTenant" parameterType="com.teaShop.bean.ColdStorageTenant" >
+  	insert cold_storage_tenant value(#{renterId},#{renterName},#{idPhoto},#{name},#{phone},#{email}
+  									,#{businessRange},#{id1},#{id1Pic},#{id2},#{id2Pic},#{id3},#{id3Pic});
+  </insert>
+  <!-- 编辑 -->
+  <update id="editTenant" parameterType="com.teaShop.bean.ColdStorageTenant">
+  	 update cold_storage_tenant 
+  	 set renter_name=#{renterName},
+  	 	id_photo=#{idPhoto},
+  	 	name=#{name},
+  	 	phone=#{phone},
+  	 	email=#{email},
+  	 	business_range=#{businessRange},
+  	 	id1=#{id1},
+  	 	id1_pic=#{id1Pic},
+  	 	id2=#{id2},
+  	 	id2_pic=#{id2Pic},
+  	 	id3=#{id3},
+  	 	id3_pic=#{id3Pic}
+  	 where renter_id=#{renterId}
+  </update>
+</mapper>
