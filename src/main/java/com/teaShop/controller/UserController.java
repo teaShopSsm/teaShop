@@ -27,7 +27,7 @@ import com.teaShop.utils.MyWebUtils;
 public class UserController {
 	@Autowired
 	private UserService service;
-	
+
 	@RequestMapping(value ="/queryManager" ,produces = "text/html;charset=UTF-8")
 	public void queryManager(HttpServletRequest request, HttpServletResponse response) {
 		try {
@@ -42,7 +42,7 @@ public class UserController {
 			e.printStackTrace();
 		}
 	}
-	
+
 	@RequestMapping(value ="/confirmNewUser" ,produces = "text/html;charset=UTF-8")
 	public void confirmNewUser(HttpServletRequest request, HttpServletResponse response) {
 		try {
@@ -59,7 +59,7 @@ public class UserController {
 			user.setEmail(Email);
 			user.setPhone(Phone);
 			user.setCreateDate(createDate);
-			
+
 			int result = service.confirmNewUser(user);
 			response.getWriter().print(JSONArray.toJSON(result));
 		} catch (IOException e) {
@@ -67,12 +67,12 @@ public class UserController {
 			e.printStackTrace();
 		}
 	}
-	
+
 	@RequestMapping(value ="/SelectUserInfo" ,produces = "text/html;charset=UTF-8")
 	public void SelectUserInfo(HttpServletRequest request, HttpServletResponse response) {
 		try {
 			int userId = Integer.parseInt(request.getParameter("user_id"));
-			
+
 			User user = service.SelectUserInfoByid(userId);
 			response.getWriter().print(JSONArray.toJSON(user));
 		} catch (IOException e) {
@@ -81,7 +81,7 @@ public class UserController {
 		}
 
 	}
-	
+
 	@RequestMapping(value ="/confirmmodifyUser" ,produces = "text/html;charset=UTF-8")
 	public void confirmmodifyUser(HttpServletRequest request, HttpServletResponse response) {
 		try {
@@ -103,7 +103,7 @@ public class UserController {
 			e.printStackTrace();
 		}
 	}
-	
+
 	@RequestMapping(value ="/deleteUser" ,produces = "text/html;charset=UTF-8")
 	public void deleteUser(HttpServletRequest request, HttpServletResponse response) {
 		try {
@@ -115,10 +115,10 @@ public class UserController {
 			e.printStackTrace();
 		}
 	}
-	
+
 	@RequestMapping(value ="/isHave" ,produces = "text/html;charset=UTF-8")
 	public void isHave(HttpServletRequest request, HttpServletResponse response){
-		
+
 		try {
 			String username = request.getParameter("username");
 			response.getWriter().print(service.isHave(username));
