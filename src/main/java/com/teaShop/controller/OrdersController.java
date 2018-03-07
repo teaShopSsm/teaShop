@@ -28,7 +28,7 @@ public class OrdersController {
                        @RequestParam(value="pageSize",defaultValue="10")int pageSize){
         try {
             PageHelper.startPage(pageNumber, pageSize);
-            List<ColdStorageTenant> cstList = ordersService.getAll();
+            List<TeaOrders> cstList = ordersService.getAll();
             PageInfo page = new PageInfo(cstList);
             response.getWriter().print(JSONObject.toJSON(page));
         } catch (IOException e) {
