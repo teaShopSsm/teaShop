@@ -143,5 +143,18 @@
     </dependencies>
     <build>
         <finalName>TeaShop</finalName>
+        <resources>
+            <resource>
+                <directory>src/main/java</directory>
+                <includes>
+                    <include>**/*.xml</include>
+                    <include>**/*.properties</include>
+                </includes>
+            </resource>
+            <resource>
+                <!-- 打包静态资源,删除将无法访问所有静态资源 -->
+                <directory>src/main/resources</directory>
+            </resource>
+        </resources>
     </build>
 </project>
