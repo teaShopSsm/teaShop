@@ -33,26 +33,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <link rel="stylesheet"
           href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
-<!--
-BODY TAG OPTIONS:
-=================
-Apply one or more of the following classes to get the
-desired effect
-|---------------------------------------------------------|
-| SKINS         | skin-blue                               |
-|               | skin-black                              |
-|               | skin-purple                             |
-|               | skin-yellow                             |
-|               | skin-red                                |
-|               | skin-green                              |
-|---------------------------------------------------------|
-|LAYOUT OPTIONS | fixed                                   |
-|               | layout-boxed                            |
-|               | layout-top-nav                          |
-|               | sidebar-collapse                        |
-|               | sidebar-mini                            |
-|---------------------------------------------------------|
--->
+
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
 
@@ -62,9 +43,9 @@ desired effect
         <!-- Logo -->
         <a href="#" class="logo">
             <!-- mini logo for sidebar mini 50x50 pixels -->
-            <span class="logo-mini"><b>A</b>LT</span>
+            <span class="logo-mini"><b>T</b>EA</span>
             <!-- logo for regular state and mobile devices -->
-            <span class="logo-lg"><b>雪链</b></span>
+            <span class="logo-lg"><b>茶饮</b></span>
         </a>
 
         <!-- Header Navbar -->
@@ -263,43 +244,56 @@ desired effect
             <!-- /.search form -->
 
             <!-- Sidebar Menu -->
-            <ul class="sidebar-menu" data-widget="tree">
-                <li class="header">HEADER</li>
-                <!-- Optionally, you can add icons to the links -->
-                <li><a href="#" onclick="link('TeaShop/goods/list')"><i class="fa fa-link"></i> <span>会员管理</span></a></li>
-                <li><a href="#" onclick="link('TeaShop/goods/list')"><i class="fa fa-link"></i> <span>订单管理</span></a></li>
-                <li class="treeview">
-                    <a href="#"><i class="fa fa-link"></i> <span>市场租赁管理</span>
-                        <span class="pull-right-container">
-                <i class="fa fa-angle-left pull-right"></i>
-             	 </span>
-                    </a>
-                    <ul class="treeview-menu">
-                        <li><a href="#" onclick="">出租物信息管理</a></li>
-                        <li><a href="#" onclick="">收费信息管理</a></li>
-                        <li><a href="#" onclick="">统计分析</a></li>
-                    </ul>
-                </li>
-                
-                <li class="treeview">
-                    <a href="#"><i class="fa fa-link"></i> <span>费用管理</span>
-                        <span class="pull-right-container">
-                <i class="fa fa-angle-left pull-right"></i>
-             	 </span>
-                    </a>
-                    <ul class="treeview-menu">
-                        <li><a href="#" onclick="">租户充值</a></li>
-                        <li><a href="#" onclick="">租户付费</a></li>
-                    </ul>
-                </li>
-                
-                <li><a href="#" onclick="link('pc/Company.html')"><i class="fa fa-link"></i> <span>冷库企业信息</span></a></li>
-                <li><a href="#" onclick=""><i class="fa fa-link"></i> <span>冷库信息管理</span></a></li>
-                <li><a href="#" onclick="link('pc/ColdStorageRoom.html')"><i class="fa fa-link"></i> <span>冷间信息管理</span></a></li>
-                <li><a href="#" onclick="link('pc/tenant.html')"><i class="fa fa-link"></i> <span>租户信息管理</span></a></li>
-                <li><a href="#" onclick="link('pc/Manager.html')"><i class="fa fa-link"></i> <span>冷库企业人员管理</span></a></li>
+            <ul class="sidebar-menu" data-widget="tree" id="userMenuPage">
+                <!--<li class="header">HEADER</li>-->
+                <!--&lt;!&ndash; Optionally, you can add icons to the links &ndash;&gt;-->
 
-              
+                <!--<li class="treeview">-->
+                    <!--<a href="#"><i class="fa fa-link"></i> <span>冷库租赁管理</span>-->
+                        <!--<span class="pull-right-container">-->
+                <!--<i class="fa fa-angle-left pull-right"></i>-->
+             	 <!--</span>-->
+                    <!--</a>-->
+                    <!--<ul class="treeview-menu">-->
+                        <!--<li><a href="#" onclick="">冷库平面图</a></li>-->
+                        <!--<li><a href="#" onclick="">冷库租赁审核</a></li>-->
+                        <!--<li><a href="#" onclick="">冷库到期通知</a></li>-->
+                        <!--<li><a href="#" onclick="">统计分析</a></li>-->
+                    <!--</ul>-->
+                <!--</li>-->
+
+                <!--<li class="treeview">-->
+                    <!--<a href="#"><i class="fa fa-link"></i> <span>市场租赁管理</span>-->
+                        <!--<span class="pull-right-container">-->
+                <!--<i class="fa fa-angle-left pull-right"></i>-->
+             	 <!--</span>-->
+                    <!--</a>-->
+                    <!--<ul class="treeview-menu">-->
+                        <!--<li><a href="#" onclick="">出租物信息管理</a></li>-->
+                        <!--<li><a href="#" onclick="">收费信息管理</a></li>-->
+                        <!--<li><a href="#" onclick="">统计分析</a></li>-->
+                    <!--</ul>-->
+                <!--</li>-->
+
+                <!--<li class="treeview">-->
+                    <!--<a href="#"><i class="fa fa-link"></i> <span>费用管理</span>-->
+                        <!--<span class="pull-right-container">-->
+                <!--<i class="fa fa-angle-left pull-right"></i>-->
+             	 <!--</span>-->
+                    <!--</a>-->
+                    <!--<ul class="treeview-menu">-->
+                        <!--<li><a href="#" onclick="">租户充值</a></li>-->
+                        <!--<li><a href="#" onclick="">租户付费</a></li>-->
+                    <!--</ul>-->
+                <!--</li>-->
+
+                <!--<li><a href="#" onclick="link('pc/Company.html')"><i class="fa fa-link"></i> <span>冷库企业信息</span></a></li>-->
+                <!--<li><a href="#" onclick=""><i class="fa fa-link"></i> <span>冷库信息管理</span></a></li>-->
+                <!--<li><a href="#" onclick="link('pc/ColdStorageRoom.html')"><i class="fa fa-link"></i> <span>冷间信息管理</span></a></li>-->
+                <!--<li><a href="#" onclick="link('pc/tenant.html')"><i class="fa fa-link"></i> <span>租户信息管理</span></a></li>-->
+                <!--<li><a href="#" onclick="link('pc/user.html')"><i class="fa fa-link"></i> <span>冷库企业人员管理</span></a></li>-->
+
+
             </ul>
             <!-- /.sidebar-menu -->
         </section>
@@ -324,7 +318,7 @@ desired effect
         <!-- Main content -->
         <section class="content container-fluid" style="padding:0">
             <iframe id="contentIfream" frameborder="no" name="contentIfream" src="pc/index.html"
-                    style="width: 100%;height:582px;overflow-y:auto;"></iframe>
+                    style="width: 100%;height: 800px;overflow-y:auto;"></iframe>
             <!--------------------------
               | Your Page Content Here |
               -------------------------->
@@ -333,15 +327,7 @@ desired effect
     </div>
     <!-- /.content-wrapper -->
 
-    <!-- Main Footer -->
-   <!--  <footer class="main-footer">
-        To the right
-        <div class="pull-right hidden-xs">
-            Anything you want
-        </div>
-        Default to the left
-        <strong>Copyright &copy; 2016 <a href="#">Company</a>.</strong> All rights reserved.
-    </footer> -->
+
 
     <!-- Control Sidebar -->
     <aside class="control-sidebar control-sidebar-dark">
@@ -425,23 +411,25 @@ desired effect
 <!-- REQUIRED JS SCRIPTS -->
 
 <!-- jQuery 3 -->
+
+<!-- Optionally, you can add Slimscroll and FastClick plugins.
+     Both of these plugins are recommended to enhance the
+     user experience. -->
+</body>
 <script src="css/bower_components/jquery/dist/jquery.min.js"></script>
 <!-- Bootstrap 3.3.7 -->
 <script src="css/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <!-- AdminLTE App -->
 <script src="dist/js/adminlte.min.js"></script>
+<script src="js/pc/starter.js"></script>
 <script type="text/javascript">
 
     /* function CompanyInfoInput(){
     	 $("#contentIfream").attr("src", "pc/CompanyInfoInput.html");
     } */
-    
+
     function link(url){
-    	$("#contentIfream").attr("src", url);
+        $("#contentIfream").attr("src", url);
     }
 </script>
-<!-- Optionally, you can add Slimscroll and FastClick plugins.
-     Both of these plugins are recommended to enhance the
-     user experience. -->
-</body>
 </html>

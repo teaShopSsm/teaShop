@@ -64,9 +64,10 @@ function operateFormatter(value, row, index) {
         '<i class="glyphicon glyphicon-user"></i>',
         '</a>'
         + "&nbsp;&nbsp;&nbsp;&nbsp;" +
-        '<a class="menu" href="javascript:void(0)" title="菜单" style="color:#f0ad4e" onclick="showUserMenu(' + value + ')">',
-        '<i class="glyphicon glyphicon-book"></i>',
-        '</a>'+ "&nbsp;&nbsp;&nbsp;&nbsp;" +
+        // '<a class="menu" href="javascript:void(0)" title="菜单" style="color:#f0ad4e" onclick="showUserMenu(' + value + ')">',
+        // '<i class="glyphicon glyphicon-book"></i>',
+        // '</a>'
+        // + "&nbsp;&nbsp;&nbsp;&nbsp;" +
         '<a class="remove" href="javascript:void(0)" title="重置密码" style="color:#f0ad4e" onclick="resetUserPasswrd(' + value + ')">',
         '<i class="glyphicon glyphicon-scissors"></i>',
         '</a>'
