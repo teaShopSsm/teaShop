@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <link rel="icon" href="images/logo.png">
+    <title>用户管理</title>
+    <link rel="stylesheet" href="../plugins/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="../plugins/bootstrap-table/css/bootstrap-table.min.css">
+    <link rel="stylesheet" href="../plugins/sweetalert/sweetalert.css">
+
+
+    <link rel="stylesheet" href="../plugins/jqwidgets/styles/jqx.base.css" type="text/css" />
+</head>
+<body>
+<nav class="navbar navbar-default navbar-fixed-top" style="height: 40px">
+    <div class="row" style="padding-top: 8px; padding-left: 20px;">
+        <div class="col-md-3">
+				<span class="input-group"> <span class="input-group-addon" style="color: black; padding: 3px;">用户名称</span> <input
+                        type="text" id="userNameQuery" class="form-control" placeholder="请输入用户名称"> </span>
+        </div>
+        <div class="col-md-3">
+				<span class="input-group"> <span class="input-group-addon" style="color: black; padding: 3px;">用戶描述</span> <input
+                        type="text" id="userDescQuery" class="form-control" placeholder="请输入用户描述"> </span>
+        </div>
+        <div class="col-md-3">
+            <ul class="nav navbar-left">
+                <button type="button" class="btn btn-primary btn-sm" style="" onclick="userQuery()">
+                    <span class="glyphicon glyphicon-ok"></span>查询
+                </button>
+                <button type="button" class="btn btn-success btn-sm" id="userInsert" onclick="userInsert()">
+                    <span class="glyphicon glyphicon-plus"></span>添加
+                </button>
+            </ul>
+        </div>
+    </div>
+</nav>
+<nav style="postion:absolute;top:30px;padding-left: 10px;padding-right: 10px">
+    <table id="userTable">
+    </table>
+</nav>
+<div class="modal fade in" id="userMessageInsert" role="dialog" aria-hidden="true" style="z-index: 1100;">
+    <div class="modal-dialog" style="width: 350px; margin-top: 20px">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close" type="button" aria-hidden="true" onclick="closeUserInsertModal()">&times;</button>
+                <h4 class="modal-title" id="point-title">添加用户</h4>
+            </div>
+            <div class="modal-body">
+                <div style="margin-left: 25px;">
+                    <form class="form-horizontal" role="form">
+                        <div class="form-group">
+                            <div class="input-group" style="width: 300px">
+                                <span class="input-group-addon" style="color: black;">用户名称</span> <input id="userNameInsert" type="text"
+                                                                                                         class="form-control" placeholder="请输入用户名称">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group" style="width: 300px">
+                                <span class="input-group-addon" style="color: black;">用户密码</span> <input id="passwordInsert" type="password"
+                                                                                                         class="form-control" placeholder="请输入密码">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group" style="width: 300px">
+                                <span class="input-group-addon" style="color: black;">确认密码</span> <input id="passwdInsert" type="password"
+                                                                                                         class="form-control" placeholder="请确认密码">
+                            </div>
+                        </div>
+                        <div class="form-group companyInsert">
+                            <div class="input-group" style="width: 300px">
+                                <span class="input-group-addon" style="color: black;">所属公司</span> <select id="companyInsert" name="userType"
+                                                                                                          class="selectpicker">
+                            </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group" style="width: 300px">
+                                <span class="input-group-addon" style="color: black;">用户类型</span> <select id="userTypeInsert" name="userType"
+                                                                                                          class="selectpicker">
+                            </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group" style="width: 300px">
+                                <span class="input-group-addon" style="color: black;">电话号码</span> <input id="userPhoneInsert" type="text"
+                                                                                                         class="form-control" placeholder="请输入用户电话">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group" style="width: 300px">
+                                <span class="input-group-addon" style="color: black;">电子邮箱</span> <input id="userEmailInsert" type="text"
+                                                                                                         class="form-control" placeholder="请输入用户邮箱">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group" style="width: 300px">
+                                <span class="input-group-addon" style="color: black;">用户描述</span>
+                                <textarea id="userDescInsert" type="text" class="form-control" style="resize:none;" placeholder="请输入用户描述"></textarea>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="modal-footer" style="text-align: center;">
+                        <button class="btn btn-primary" type="button" onclick="insertUser()">确认</button>
+                        <button class="btn btn-default" type="button" onclick="closeUserInsertModal()">取消</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade in" id="userMessage" role="dialog" aria-hidden="true" style="z-index: 1100;">
+    <div class="modal-dialog" style="width: 350px; margin-top: 20px">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close" type="button" aria-hidden="true" onclick="closeUserMessageoModal()">&times;</button>
+                <h4 class="modal-title" id="point-title">更新用户信息</h4>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" id="userId" />
+                <div style="margin-left: 25px;">
+                    <form class="form-horizontal" role="form">
+                        <div class="form-group">
+                            <div class="input-group" style="width: 300px">
+                                <span class="input-group-addon" style="color: black;">名称</span> <input id="userNameUpdate" type="text"
+                                                                                                       class="form-control" placeholder="请输入用户名称">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group" style="width: 300px">
+                                <span class="input-group-addon" style="color: black;">邮箱</span> <input id="userEmailUpdate" type="text"
+                                                                                                       class="form-control" placeholder="请输入用户邮箱">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group" style="width: 300px">
+                                <span class="input-group-addon" style="color: black;">电话</span> <input id="userPhoneUpdate" type="text"
+                                                                                                       class="form-control" placeholder="请输入用户电话">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group" style="width: 300px">
+                                <span class="input-group-addon" style="color: black;">描述</span>
+                                <textarea id="userDescUpdate" type="text" class="form-control" placeholder="请输入用户描述" style="resize:none;"></textarea>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="modal-footer" style="text-align: center;">
+                        <button class="btn btn-primary" type="button" onclick="updateUserMessage()">确认</button>
+                        <button class="btn btn-default" type="button" onclick="closeUserMessageoModal()">取消</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade in" id="userMenuMessage" role="dialog" aria-hidden="true" style="z-index: 1100;">
+    <div class="modal-dialog" style="width: 840px; margin-top: 20px; height: 400px">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close" type="button" aria-hidden="true" onclick="closeUserMenuMessageModal()">&times;</button>
+                <h4 class="modal-title" id="point-title">编辑用户菜单信息</h4>
+            </div>
+            <div class="modal-body">
+                <div style="height: 300px; overflow-y: auto;">
+                    <input type="hidden" id="userMenuId">
+                </div>
+
+                <div>
+                    <div class="modal-footer" style="text-align: center;">
+                        <button class="btn btn-default" type="button" onclick="closeUserMenuMessageModal()">关闭</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade in" id="userRoleMessage" role="dialog" aria-hidden="true" style="z-index: 1100;">
+    <div class="modal-dialog" style="width: 840px; margin-top: 20px; height: 400px">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close" type="button" aria-hidden="true" onclick="closeUserRoleMessageModal()">&times;</button>
+                <h4 class="modal-title" id="point-title">编辑用户角色信息</h4>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" id="userRoleId">
+                <div style="height: 300px; overflow-y: auto;">
+                    <table id="userRoleTable" class="table table-striped table-bordered table-hover">
+
+                    </table>
+                </div>
+                <div>
+                    <div class="modal-footer" style="text-align: center;">
+                        <button class="btn btn-default" type="button" onclick="closeUserRoleMessageModal()">关闭</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade in" id="userCompanyMessage" role="dialog" aria-hidden="true" style="z-index: 1100;">
+    <div class="modal-dialog" style="width: 840px; margin-top: 20px; height: 400px">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close" type="button" aria-hidden="true" onclick="closeUserCompanyMessageModal()">&times;</button>
+                <h4 class="modal-title" id="point-title">企业信息</h4>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" id="userCompanyId">
+                <div style="height: auto; overflow-y: auto;">
+                    <table id="userCompanyTable" class="table table-striped table-bordered table-hover">
+
+                    </table>
+                </div>
+                <div>
+                    <div class="modal-footer" style="text-align: center;">
+                        <button class="btn btn-default" type="button" onclick="closeUserCompanyMessageModal()">关闭</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade in" id="userColdStoreMessage" role="dialog" aria-hidden="true" style="z-index: 1100;">
+    <div class="modal-dialog" style="width: 840px; margin-top: 20px; height: 400px">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close" type="button" aria-hidden="true" onclick="closeUserColdStoreMessageModal()">&times;</button>
+                <h4 class="modal-title" id="point-title">冷库信息</h4>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" id="userColdStoreId">
+                <div style="height: auto; overflow-y: auto;">
+                    <table id="userColdStoreTable" class="table table-striped table-bordered table-hover">
+                    </table>
+                </div>
+                <div>
+                    <div class="modal-footer" style="text-align: center;">
+                        <button class="btn btn-default" type="button" onclick="closeUserColdStoreMessageModal()">关闭</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../js/jquery.min.js"></script>
+
+<script src="../plugins/jqwidgets/jqxcore.js"></script>
+<script src="../plugins/jqwidgets/jqxdata.js"></script>
+<script src="../plugins/jqwidgets/jqxbuttons.js"></script>
+<script src="../plugins/jqwidgets/jqxscrollbar.js"></script>
+<script src="../plugins/jqwidgets/jqxdatatable.js"></script>
+<script src="../plugins/jqwidgets/jqxtreegrid.js"></script>
+<script src="../plugins/jqwidgets/jqxtree.js"></script>
+<script src="../plugins/jqwidgets/jqxpanel.js"></script>
+<script src="../plugins/jqwidgets/jqxdropdownbutton.js"></script>
+
+<script src="../plugins/bootstrap/js/bootstrap.js"></script>
+<script src="../plugins/bootstrap-table/js/bootstrap-table.js"></script>
+<script src="../plugins/bootstrap-table/js/bootstrap-table-zh-CN.js"></script>
+<script src="../plugins/sweetalert/sweetalert.min.js"></script>
+<script src="../js/pc/user.js"></script>
+<script src="../js/utils.js"></script>
+</body>
+</html>
