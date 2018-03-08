@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.teaShop.bean.SysUser;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -55,9 +56,9 @@ public class LoginInterceptor implements HandlerInterceptor {
 	             return true;
 	     }else {               
 	             //Integer user =  (Integer)request.getSession().getAttribute("User"); 
-	             String username = (String)request.getSession().getAttribute("username");
+	             SysUser user = (SysUser)request.getSession().getAttribute("user");
 	            // String password = (String)request.getSession().getAttribute("password");
-	            if(username!=null){  
+	            if(user!=null){
 	                //登陆成功的用户  
 	                return true;  
 	            }else{  
