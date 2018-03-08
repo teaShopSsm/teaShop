@@ -2,6 +2,7 @@ package com.teaShop.bean;
 
 public class SysUserRole {
 
+	private Integer userRoleId;
 	private int userId;
 	private String userName;
 	private int roleId;

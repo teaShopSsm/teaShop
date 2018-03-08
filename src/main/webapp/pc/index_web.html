@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>首页</title>
+    <link rel="stylesheet" href="../plugins/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../plugins/swiper-4.1.6/css/swiper.min.css">
+    <style>
+        html, body, div, span, applet, object, iframe,
+        h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+        a, abbr, acronym, address, big, cite, code,
+        del, dfn, em, img, ins, kbd, q, s, samp,
+        small, strike, strong, sub, sup, tt, var,
+        b, u, i, center,
+        dl, dt, dd, ol, ul, li,
+        fieldset, form, label, legend,
+        table, caption, tbody, tfoot, thead, tr, th, td,
+        article, aside, canvas, details, embed,
+        figure, figcaption, footer, header, hgroup,
+        menu, nav, output, ruby, section, summary,
+        time, mark, audio, video {
+            margin: 0;
+            padding: 0;
+            border: 0;
+            font-size: 100%;
+            vertical-align: baseline;
+            font-family: "Microsoft YaHei UI";
+        }
+
+        /* HTML5 display-role reset for older browsers */
+        article, aside, details, figcaption, figure,
+        footer, header, hgroup, menu, nav, section {
+            display: block;
+        }
+
+        body {
+            line-height: 1;
+        }
+
+        ol, ul {
+            list-style: none;
+        }
+
+        blockquote, q {
+            quotes: none;
+        }
+
+        blockquote:before, blockquote:after,
+        q:before, q:after {
+            content: '';
+            content: none;
+        }
+
+        table {
+            border-collapse: collapse;
+            border-spacing: 0;
+        }
+
+        /*自定义*/
+        .head {
+            width: 100%;
+            height: 100px;
+        }
+
+        .head .head_logo {
+            width: 1080px;
+            height: 100px;
+            margin: 0 auto;
+        }
+
+        .container {
+            width: 1080px;
+            margin: 6px auto;
+        }
+
+        .swiper-wrapper .swiper-slide img {
+            width: 100%;
+            height: 430px;
+        }
+
+        .nav {
+            width: 1080px;
+            margin: 20px auto 3px;
+            height: 26px;
+        }
+
+        .nav ul li {
+            font-size: 16px;
+            font-weight: 600;
+            float: left;
+            margin: 4px 10px 4px 4px;
+        }
+
+        .goods_list {
+            width: 100%;
+            display: block;
+        }
+
+        .goods_list ul li {
+            float: left;
+            padding: 3px;
+            cursor: pointer;
+            margin-bottom: 3px;
+        }
+
+        .goods_list ul li img {
+            width: 264px;
+            height: 264px;
+            margin: 0 auto;
+            display: block;
+        }
+
+        .goods_list ul li p {
+            padding: 2px;
+            max-width: 264px;
+        }
+
+        .goods_name {
+            font-size: 14px;
+            color: #333;
+        }
+
+        .goods_desc {
+            font-size: 12px;
+            color: #666;
+        }
+
+        .goods_price {
+            font-size: 20px;
+            color: red;
+        }
+
+    </style>
+</head>
+<body>
+<div class="head">
+    <div class="head_logo"><img style="height:100%;" src="../img/tlogo.jpg"></div>
+</div>
+<div class="nav">
+    <ul>
+        <li><a href="#">test斯蒂芬</a></li>
+        <li><a href="#">安世高</a></li>
+        <li><a href="#">按时到岗</a></li>
+        <li><a href="#">请问额发</a></li>
+        <li><a href="#">test斯蒂芬</a></li>
+        <li><a href="#">test斯蒂芬</a></li>
+        <li><a href="#">test斯蒂芬</a></li>
+        <li><a href="#">test斯蒂芬</a></li>
+        <li><a href="#">过分的</a></li>
+
+        <li class="">
+            <a href="/TeaShop/loginOut" class="" >
+                <span>注销</span>
+            </a>
+        </li>
+    </ul>
+</div>
+<!-- Swiper -->
+<div class="swiper-container">
+    <div class="swiper-wrapper">
+        <div class="swiper-slide"><img src="../img/index1.jpg"></div>
+        <div class="swiper-slide"><img src="../img/index2.jpg"></div>
+        <div class="swiper-slide"><img src="../img/index3.jpg"></div>
+    </div>
+    <!-- Add Pagination -->
+    <div class="swiper-pagination"></div>
+</div>
+<div class="container">
+    <div style="display: block;height: 30px;">
+        <h1 class="pull-left" style="line-height: 30px;">最新商品</h1>
+        <button class="btn btn-success btn-small pull-right">更多商品</button>
+    </div>
+    <div class="goods_list">
+        <ul>
+            <li>
+                <img src="../img/snowlink.ico">
+                <p class="goods_name">JONSBO乔思伯UMX4 ATX大板 中塔式</p>
+                <p class="goods_desc">全兼容240水冷 支持ATX大主板 30cm内长显卡</p>
+                <p class="goods_price pull-left">¥668</p>
+                <p class="goods_add">
+                    <button class="btn btn-success btn-small pull-right">➕</button>
+                </p>
+            </li>
+            <li>
+                <img src="../img/snowlink.ico">
+                <p class="goods_name">JONSBO乔思伯UMX4 ATX大板 中塔式</p>
+                <p class="goods_desc">全兼容240水冷 支持ATX大主板 30cm内长显卡</p>
+                <p class="goods_price pull-left">¥668</p>
+                <p class="goods_add">
+                    <button class="btn btn-success btn-small pull-right">➕</button>
+                </p>
+            </li>
+            <li>
+                <img src="../img/snowlink.ico">
+                <p class="goods_name">JONSBO乔思伯UMX4 ATX大板 中塔式</p>
+                <p class="goods_desc">全兼容240水冷 支持ATX大主板 30cm内长显卡</p>
+                <p class="goods_price pull-left">¥668</p>
+                <p class="goods_add">
+                    <button class="btn btn-success btn-small pull-right">➕</button>
+                </p>
+            </li>
+            <li>
+                <img src="../img/snowlink.ico">
+                <p class="goods_name">JONSBO乔思伯UMX4 ATX大板 中塔式</p>
+                <p class="goods_desc">全兼容240水冷 支持ATX大主板 30cm内长显卡</p>
+                <p class="goods_price pull-left">¥668</p>
+                <p class="goods_add">
+                    <button class="btn btn-success btn-small pull-right">➕</button>
+                </p>
+            </li>
+            <li>
+                <img src="../img/snowlink.ico">
+                <p class="goods_name">JONSBO乔思伯UMX4 ATX大板 中塔式</p>
+                <p class="goods_desc">全兼容240水冷 支持ATX大主板 30cm内长显卡</p>
+                <p class="goods_price pull-left">¥668</p>
+                <p class="goods_add">
+                    <button class="btn btn-success btn-small pull-right">➕</button>
+                </p>
+            </li>
+
+            <li>
+                <img src="../img/snowlink.ico">
+                <p class="goods_name">JONSBO乔思伯UMX4 ATX大板 中塔式</p>
+                <p class="goods_desc">全兼容240水冷 支持ATX大主板 30cm内长显卡</p>
+                <p class="goods_price pull-left">¥668</p>
+                <p class="goods_add">
+                    <button class="btn btn-success btn-small pull-right">➕</button>
+                </p>
+            </li>
+        </ul>
+    </div>
+
+</div>
+
+<script src="../js/jquery.min.js"></script>
+<script src="../plugins/bootstrap/js/bootstrap.min.js"></script>
+<script src="../plugins/swiper-4.1.6/js/swiper.min.js"></script>
+<script>
+    var swiper = new Swiper('.swiper-container', {
+        pagination: {
+            el: '.swiper-pagination',
+            dynamicBullets: true,
+        },
+    });
+</script>
+</body>
+</html>

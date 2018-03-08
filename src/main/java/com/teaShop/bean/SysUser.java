@@ -1,6 +1,8 @@
 package com.teaShop.bean;
 
 import java.util.Date;
+import java.util.List;
+
 import com.teaShop.utils.Pagination;
 
 public class SysUser extends Pagination {

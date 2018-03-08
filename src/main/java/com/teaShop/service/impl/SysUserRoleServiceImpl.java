@@ -18,6 +18,9 @@ public class SysUserRoleServiceImpl implements SysUserRoleService {
 	private SysUserRoleDao mapper;
 	private SysRoleDao roleMapper;
 
+	@Autowired
+	private SysUserRoleDao sysUserRoleDao;
+
 	public SysUserRoleDao getMapper() {
 		return mapper;
 	}
@@ -50,4 +53,8 @@ public class SysUserRoleServiceImpl implements SysUserRoleService {
 		return UserRoleUtils.initUserRole(roles, userRoles);
 	}
 
+	public List<SysUserRole> getUserRoleByUserId(int userId) {
+
+		return sysUserRoleDao.getUserRoleByUserId(userId);
+	}
 }

@@ -49,10 +49,12 @@ function login(){
                  type:'post',
                  dataType:'json',
                  success:function(data){
-                     if(data.flag >= 0){
+                     if(data.flag == 0){
                          //swal('成功', '登陆成功！！', 'success');
                          window.location.href="starter.html";
-                     }else{
+                     }else if(data.flag == 1){//顾客登陆
+                         window.location.href="pc/index_web.html";
+					 }else{
                          swal('错误', '账号或密码错误！', 'error');
                      }
                  }

@@ -28,4 +28,11 @@ public interface SysUserRoleService {
 	 * @return
 	 */
 	public int deleteUserRole(SysUserRole bean);
+
+	/**
+	 *
+	 * @param userId
+	 * @return
+	 */
+	public List<SysUserRole> getUserRoleByUserId(int userId);
 }

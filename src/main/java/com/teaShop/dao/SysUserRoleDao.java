@@ -32,4 +32,9 @@ public interface SysUserRoleDao {
 	 */
 	public int deleteUserRole(SysUserRole bean);
 
+	/**
+	 *
+	 * 根据用户Id 查询所有用户角色
+	 */
+	public  List<SysUserRole> getUserRoleByUserId(int userId);
 }

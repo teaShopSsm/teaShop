@@ -2,6 +2,7 @@ package com.teaShop.utils;
 
 public class Const {
     public static final int OK = 0;
+    public static final int OKGK = 1;
     public static final String NORMAL = "OK";
 
     public static final int TIMEOUT_NUMBER = 600000;

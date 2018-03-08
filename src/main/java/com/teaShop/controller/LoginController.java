@@ -10,7 +10,11 @@ import javax.servlet.http.HttpSession;
 
 import com.alibaba.fastjson.JSONObject;
 import com.teaShop.bean.Message;
+import com.teaShop.bean.SysRole;
 import com.teaShop.bean.SysUser;
+import com.teaShop.bean.SysUserRole;
+import com.teaShop.service.SysRoleService;
+import com.teaShop.service.SysUserRoleService;
 import com.teaShop.service.SysUserService;
 import com.teaShop.utils.Const;
 import com.teaShop.utils.MD5Util;
@@ -26,6 +30,8 @@ public class LoginController {
 
 	//@Autowired
 	//private UserService service;
+	@Autowired
+	private SysUserRoleService userRoleService;
 	
 	@RequestMapping("/loginOut")
 	public String logOut(HttpSession session){
@@ -52,6 +58,7 @@ public class LoginController {
 //	}
 
 	private SysUserService service;
+
 	MD5Util md5 = new MD5Util();
 	//final static Logger logger = LoggerFactory.getLogger(SysUserController.class);
 	Message message = null;
@@ -89,16 +96,25 @@ public class LoginController {
 					message.setFlag(Const.NOT_OK);
 					message.setMessage(Const.NAME_PASSWORD_MESSAGE);
 				} else {
+					List<SysUserRole> userRoleList = null;
 					for (SysUser user : userList) {
 						if (user.getPassword().equals(password)) {
 							HttpSession session = request.getSession();
+							userRoleList = userRoleService.getUserRoleByUserId(user.getUserId());
 							session.setAttribute("user", user);
 							isLogin = true;
 							break;
 						}
 					}
 					if (isLogin == true) {
-						message.setFlag(Const.OK);
+						if(1 == userRoleList.get(0).getRoleId() || 14 == userRoleList.get(0).getRoleId()){
+							message.setFlag(Const.OK);
+						}else if(13 == userRoleList.get(0).getRoleId()){
+							message.setFlag(Const.OKGK);
+						}else {
+							message.setFlag(Const.OKGK);
+						}
+
 						message.setMessage(Const.NORMAL);
 						//logger.info(name + ":登录成功");
 					} else {
