@@ -2301,7 +2301,7 @@
                 paginationHeight = getRealHeight(this.$pagination),
                 height = this.options.height - toolbarHeight - paginationHeight;
 
-            this.$tableContainer.css('height', height + 'px');
+            //this.$tableContainer.css('height', height + 'px');
         }
 
         if (this.options.cardView) {
@@ -2330,7 +2330,7 @@
 
         // Assign the correct sortable arrow
         this.getCaret();
-        this.$tableContainer.css('padding-bottom', padding + 'px');
+        //this.$tableContainer.css('padding-bottom', padding + 'px');
         this.trigger('reset-view');
     };
 
