@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.teaShop.dao.SysUserDao">
+    <select id="getUser" resultType="com.teaShop.bean.SysUser"
+            parameterType="java.lang.String">
+	  select 
+ 		 user_id as userId,
+		 user_name as userName,
+		 password as password,
+	     is_Deleted as isDeleted,
+		 is_System as isSystem,
+		 email as email,
+		 create_date as createDate
+	   from sys_user user 
+	      where 
+	       is_deleted = 0
+	      and 
+	 	   USER_NAME =#{name,jdbcType=VARCHAR}
+	</select>
+
+    <select id="getUserById" resultType="com.teaShop.bean.SysUser" parameterType="com.teaShop.bean.SysUser">
+	  select 
+	    user_id AS userId,
+		user_name AS userName,
+		password as password,
+		USER.description AS description,
+		USER.is_Deleted AS isDeleted,
+		is_System AS isSystem,
+		company_id as companyId,
+		email AS email,
+		MOBILE_PHONE AS phone,
+		create_date AS createDate
+	  from sys_user user
+	   where
+	   user_id = #{id}
+	</select>
+
+    <select id="blurryUser" resultType="com.teaShop.bean.SysUser" parameterType="com.teaShop.bean.SysUser">
+	  SELECT
+		user_id AS userId,
+		user_name AS userName,
+		USER .description AS description,
+		USER .is_Deleted AS isDeleted,
+		is_System AS isSystem,
+		email AS email,
+		MOBILE_PHONE AS phone,
+		create_date AS createDate
+		FROM sys_user USER
+	 where
+	    <!--<choose>-->
+	        <!--<when test="isSystem==1">-->
+	            <!--is_system=2 and -->
+	        <!--</when>-->
+	        <!--<otherwise>-->
+	            <!--company_id = #{companyId} and is_system &gt;=#{isSystem} and-->
+	        <!--</otherwise>-->
+        <!--</choose>-->
+	     <!--user_id !=#{userId} and -->
+	      user_name like '%${userName}%'
+	 	 and user.description like '%${description}%'
+ 	     limit #{pageNumber},#{pageSize}
+	</select>
+    <select id="blurryUserCount" resultType="java.lang.Integer" parameterType="com.teaShop.bean.SysUser">
+		SELECT
+			count(user_id) as count
+		FROM
+			sys_user USER 
+		where 
+		 user_name like '%${userName}%'
+	 	 and user.description like '%${description}%'
+	 	 and user_id !=#{userId}
+	</select>
+    <insert id="addUser" parameterType="com.teaShop.bean.SysUser" useGeneratedKeys="true">
+    	<selectKey resultType="java.lang.Integer" order="AFTER"
+            keyProperty="userId" >
+            SELECT LAST_INSERT_ID()
+		</selectKey>
+	  insert into sys_user
+	  (
+		  user_name,
+		  password,
+		  description,
+		  email,
+		  mobile_phone,
+		  create_date,
+		  company_id,
+		  user_type,
+		  is_system
+	   )
+	  values
+	  (
+		  #{userName},
+		  #{password},
+		  #{description},
+		  #{email},
+		  #{phone},
+		  #{createDate},
+		  #{companyId},
+		  #{userType},
+		  #{isSystem}
+	  )
+	</insert>
+	
+	<insert id="addUserRole" parameterType="com.teaShop.bean.SysUser">
+		insert into 
+		sys_user_role(user_id,role_id)
+		values(#{userId},#{userType})
+	</insert>
+
+    <update id="updateUser" parameterType="com.teaShop.bean.SysUser">
+        update sys_user
+        set
+        <trim suffixOverrides=",">
+        <if test="userName !=null ">
+            user_name = #{userName},
+        </if>
+		<if test="gender !=null ">
+			gender = #{gender},
+		</if>
+        <if test="email !=null ">
+            email=#{email},
+        </if>
+        <if test="phone !=null ">
+            mobile_phone =#{phone},
+        </if>
+		<if test="icon !=null ">
+			icon =#{icon},
+		</if>
+        <if test="description !=null ">
+            description = #{description},
+        </if>
+		</trim>
+        where
+        user_id = #{userId}
+    </update>
+    <update id="resetUserPassword" parameterType="com.teaShop.bean.SysUser">
+      update sys_user 
+      set
+      	password = #{password},
+      	update_date =#{updateTime}
+      where 
+      	user_id = #{userId}
+	</update>
+
+    <delete id="deleteUser" parameterType="java.lang.Integer">
+		 delete  
+		 from sys_user 
+		 where 
+		 user_id = #{userId}
+	</delete>
+	<delete id="deleteUserRoles" parameterType="java.lang.Integer">
+		delete 
+		from sys_user_role 
+		where 
+		user_id = #{userId}
+	</delete>
+	<delete id="deleteUserMenus" parameterType="java.lang.Integer">
+		delete 
+		from sys_user_page 
+		where 
+		user_id = #{userId}
+	</delete>
+    <select id="getUserByNameOrPhone" resultType="java.lang.Integer" parameterType="com.teaShop.bean.SysUser">
+		SELECT
+			count(1) AS count
+		FROM
+			sys_user
+		WHERE
+			USER_NAME = #{userName}
+			AND MOBILE_PHONE = #{phone}
+	</select>
+    <!-- 根据电话或邮箱获取用户 -->
+    <select id="getUserByUserName" resultType="com.teaShop.bean.SysUser" parameterType="java.lang.String">
+		SELECT
+			user_id AS userId,
+			user_name AS userName,
+			PASSWORD,
+			description,
+			is_system AS isSystem,
+			company_id as companyId,
+			icon,
+			su.email,
+			mobile_phone AS phone,
+			gender
+
+		FROM
+			sys_user su
+
+		where
+		su.user_name=#{name}
+
+	</select>
+
+    <!-- 根据电话获取用户 -->
+    <select id="getUserCountByPhone" resultType="java.lang.Integer" parameterType="java.lang.String">
+		SELECT
+		count(*)
+		FROM
+		sys_user
+		WHERE
+		mobile_phone = #{phone,jdbcType=VARCHAR}
+	</select>
+
+    <!-- 插入手机验证码 -->
+    <update id="updateIdentifyCode" parameterType="com.teaShop.bean.SysUser">
+		update sys_user
+		set
+		identify_code = #{identifyCode}, update_date = #{updateTime}
+		where
+		mobile_phone = #{phone}
+	</update>
+
+
+    <!-- 根据电话获取用户 -->
+    <select id="getUserByPhone" resultType="com.teaShop.bean.SysUser" parameterType="java.lang.String">
+		SELECT
+		mobile_phone as phone, identify_code as identifyCode, update_date as updateTime
+		FROM
+		sys_user
+		WHERE
+		mobile_phone = #{phone,jdbcType=VARCHAR}
+	</select>
+
+    <!-- 修改密码 -->
+    <update id="changePassword" parameterType="com.teaShop.bean.SysUser">
+		update sys_user
+		set
+		password = #{password}, identify_code = NULL, update_date = #{updateTime}
+		where
+		mobile_phone = #{phone}
+	</update>
+
+    <insert id="registUser" parameterType="com.teaShop.bean.SysUser">
+		insert into sys_user
+		(
+		user_name,
+		password,
+		mobile_phone,
+		create_date,
+		update_date
+		)
+		values
+		(
+		#{userName},
+		#{password},
+		#{phone},
+		#{createDate},
+		#{updateTime}
+		)
+	</insert>
+	
+	<!--  -->
+	<select id="getPhone" resultType="java.lang.Integer" parameterType="java.lang.String">
+		SELECT
+			count(user_id) AS count
+		FROM
+			sys_user
+		WHERE
+			MOBILE_PHONE = #{value}
+		AND IS_DELETED = 0
+	</select>
+	<select id="getMailList" resultType="string">
+		select email as email 
+		from sys_user
+	</select>
+</mapper>

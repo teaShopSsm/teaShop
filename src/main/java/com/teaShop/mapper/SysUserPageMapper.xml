@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.teaShop.dao.SysUserPageDao">
+	<select id="getUserMenus" resultType="com.teaShop.bean.SysUserPage"
+	 parameterType="java.lang.Integer"> 
+		SELECT
+			p.page_ID AS pageId,
+			p.PRE_PAGE_ID AS prePageId,
+			p.LEVEL_CODE AS levelCode,
+			p.ICON AS icon,
+			up.USER_ID AS userId
+		FROM
+			sys_user_page up
+		LEFT JOIN sys_page p ON up.PAGE_ID = p.PAGE_ID
+		WHERE
+			USER_ID  = #{userId}
+	</select>
+	<select id="getUserRoleMenus" resultType="com.teaShop.bean.SysUserPage"
+	 parameterType="java.lang.Integer"> 
+		SELECT
+			p.page_ID AS pageId,
+			p.LEVEL_CODE AS levelCode
+		FROM
+			sys_user_role ro
+		LEFT JOIN sys_role_page rp ON ro.ROLE_ID = rp.ROLE_ID
+		LEFT JOIN sys_page p ON rp.PAGE_ID = p.PAGE_ID
+		WHERE
+			ro.USER_ID = #{userId}
+	</select>
+	<insert id="addUserPage" parameterType="com.teaShop.bean.SysUserPage">
+	  insert into sys_user_page
+	        (user_id,page_id)
+	  values
+	        (#{userId},#{pageId})
+	</insert>
+	<delete id="deleteUserPage" parameterType="com.teaShop.bean.SysUserPage">
+	  delete from sys_user_page 
+         where 
+           user_id = #{userId} 
+         and page_id =#{pageId}
+	</delete>
+	<select id="getUserPage" resultType="java.lang.Integer" parameterType="com.teaShop.bean.SysUserPage" >
+		SELECT
+			count(*) AS count
+		FROM
+			sys_user_page
+		WHERE
+			PAGE_ID = #{pageId}
+		GROUP BY
+			PAGE_ID
+	</select>
+	
+	<select id="getMobilePage" resultType="com.teaShop.bean.SysUserPage" parameterType="java.lang.Integer" >
+		SELECT
+			PAGE_ID AS pageId,
+			page_name AS pageName,
+			LEVEL_CODE AS levelCode,
+			url AS url,
+			icon AS icon
+		FROM
+			sys_page
+		WHERE
+			IS_ENABLE = 1
+		AND LEFT (LEVEL_CODE, 1) = 'A'
+		AND PAGE_ID IN (
+			SELECT DISTINCT
+				PAGE_ID
+			FROM
+				sys_user_page sup
+			WHERE
+				sup.USER_ID = #{value}
+			UNION ALL
+				SELECT DISTINCT
+					srp.page_id
+				FROM
+					sys_role_page srp
+				LEFT JOIN sys_role sr ON srp.ROLE_ID = sr.ROLE_ID
+				LEFT JOIN sys_user_role sur ON sr.role_id = sur.role_id
+				WHERE
+					sur.user_id = #{value}
+		)
+		ORDER BY
+			orderCode 
+	</select>
+	<update id="deletePage" parameterType="com.teaShop.bean.SysUserPage">
+		UPDATE sys_page
+			SET IS_DELETED = 1
+		WHERE
+			PAGE_ID = #{pageId} or PRE_PAGE_ID = #{pageId}
+	</update>
+	
+	
+</mapper>
