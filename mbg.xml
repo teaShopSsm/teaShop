@@ -10,8 +10,8 @@
 		</commentGenerator>
 		<!-- 配置数据库连接 -->
 		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
-			connectionURL="jdbc:mysql://localhost:3306/csms" userId="root"
-			password="">
+			connectionURL="jdbc:mysql://106.14.225.197:3306/teashop" userId="sxx"
+			password="040701">
 		</jdbcConnection>
 
 		<javaTypeResolver>
@@ -39,7 +39,7 @@
 
 		<!-- table指定每个表的生成策略 -->
 		<!-- <table tableName="user" domainObjectName="User"></table> -->
-		<table tableName="cold_storage_tenant" domainObjectName="ColdStorageTenant"></table>
+		<table tableName="tea_orders" domainObjectName="TeaOrders"></table>
 		<!-- <table tableName="tbl_dept" domainObjectName="Department"></table> -->
 	</context>
 </generatorConfiguration>
