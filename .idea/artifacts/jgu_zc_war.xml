@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="jgu_zc:war">
+    <output-path>$PROJECT_DIR$/../sues_dy/sues_dy/target</output-path>
+    <root id="archive" name="jguzc.war">
+      <element id="artifact" artifact-name="jgu_zc:war exploded" />
+    </root>
+  </artifact>
+</component>

@@ -10,6 +10,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="jgu_zc" target="1.7" />
       <module name="TeaShop" target="1.5" />
     </bytecodeTargetLevel>
   </component>

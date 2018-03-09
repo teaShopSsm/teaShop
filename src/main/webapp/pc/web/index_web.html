@@ -6,96 +6,7 @@
     <link rel="stylesheet" href="../../css/web/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="../../css/web/style.css">
     <style>
-        html, body, div, span, applet, object, iframe,
-        h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-        a, abbr, acronym, address, big, cite, code,
-        del, dfn, em, img, ins, kbd, q, s, samp,
-        small, strike, strong, sub, sup, tt, var,
-        b, u, i, center,
-        dl, dt, dd, ol, ul, li,
-        fieldset, form, label, legend,
-        table, caption, tbody, tfoot, thead, tr, th, td,
-        article, aside, canvas, details, embed,
-        figure, figcaption, footer, header, hgroup,
-        menu, nav, output, ruby, section, summary,
-        time, mark, audio, video {
-            margin: 0;
-            padding: 0;
-            border: 0;
-            font-size: 100%;
-            vertical-align: baseline;
-            font-family: "Microsoft YaHei UI";
-        }
-
-        /* HTML5 display-role reset for older browsers */
-        article, aside, details, figcaption, figure,
-        footer, header, hgroup, menu, nav, section {
-            display: block;
-        }
-
-        body {
-            line-height: 1;
-        }
-
-        ol, ul {
-            list-style: none;
-        }
-
-        blockquote, q {
-            quotes: none;
-        }
-
-        blockquote:before, blockquote:after,
-        q:before, q:after {
-            content: '';
-            content: none;
-        }
-
-        table {
-            border-collapse: collapse;
-            border-spacing: 0;
-        }
-
         /*自定义*/
-        .head {
-            width: 100%;
-            height: 100px;
-            background-color: #1F4E78;
-        }
-
-        .head .head_logo {
-            width: 1080px;
-            height: 100px;
-            margin: 0 auto;
-            line-height: 100px;
-            font-size: 50px;
-            color: white;
-        }
-
-        .container {
-            width: 1080px;
-            margin: 6px auto;
-        }
-
-        .swiper-wrapper .swiper-slide img {
-            width: 100%;
-            height: 430px;
-        }
-
-        .nav {
-            width: 1080px;
-            margin: 20px auto 3px;
-            height: 26px;
-        }
-
-        .nav ul li {
-            font-size: 16px;
-            font-weight: 600;
-            float: left;
-            margin: 4px 10px 4px 4px;
-            margin-left: 40px;
-        }
-
         .goods_list {
             width: 100%;
             display: block;
@@ -103,36 +14,39 @@
 
         .goods_list ul li {
             float: left;
-            padding: 3px;
+            padding: 5px;
             cursor: pointer;
-            margin-bottom: 3px;
+            margin-bottom: 4px;
         }
 
         .goods_list ul li img {
-            width: 256px;
-            height: 256px;
+            width: 252px;
+            height: 252px;
             margin: 0 auto;
             display: block;
         }
 
         .goods_list ul li p {
             padding: 2px;
-            max-width: 256px;
+            max-width: 252px;
         }
 
         .goods_name {
-            font-size: 14px;
+            font-size: 16px;
             color: #333;
+            height: 36px;
         }
 
         .goods_desc {
             font-size: 12px;
             color: #666;
+            height: 26px;
         }
 
         .goods_price {
             font-size: 20px;
             color: red;
+            line-height: 34px;
         }
 
     </style>
@@ -149,7 +63,7 @@
 
 
         <li class="">
-            <a href="/TeaShop/loginOut" class="" >
+            <a href="/TeaShop/loginOut" class="">
                 <span>注销</span>
             </a>
         </li>
@@ -158,38 +72,43 @@
 
 <!-- Slider -->
 <div class="tp-banner-container">
-    <div class="tp-banner" >
+    <div class="tp-banner">
         <ul>
             <li data-transition="random-static" data-slotamount="7" data-masterspeed="1000" data-saveperformance="on">
-                <img src="../../img/web/slides/1.jpg" alt="slider-image" />
-                <div class="tp-caption sfl title-slide center" data-x="40" data-y="111" data-speed="1000" data-start="1000" data-easing="Power3.easeInOut">
+                <img src="../../img/web/slides/1.jpg" alt="slider-image"/>
+                <div class="tp-caption sfl title-slide center" data-x="40" data-y="111" data-speed="1000"
+                     data-start="1000" data-easing="Power3.easeInOut">
                     热门商品<br>
                 </div>
-               <!-- <div class="tp-caption sfr desc-slide center" data-x="40" data-y="272" data-speed="1000" data-start="1500" data-easing="Power3.easeInOut">${equsy.model}
-                </div>
-                <div class="tp-caption sfl flat-button-slider" data-x="40" data-y="323" data-speed="1000" data-start="2000" data-easing="Power3.easeInOut"><a href="${pageContext.request.contextPath}/web/index/sharing_detail.do?id=${equsy.id}">前往预约</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-chevron-right"></i></div>-->
+                <!-- <div class="tp-caption sfr desc-slide center" data-x="40" data-y="272" data-speed="1000" data-start="1500" data-easing="Power3.easeInOut">${equsy.model}
+                 </div>
+                 <div class="tp-caption sfl flat-button-slider" data-x="40" data-y="323" data-speed="1000" data-start="2000" data-easing="Power3.easeInOut"><a href="${pageContext.request.contextPath}/web/index/sharing_detail.do?id=${equsy.id}">前往预约</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-chevron-right"></i></div>-->
             </li>
 
             <li data-transition="random-static" data-slotamount="7" data-masterspeed="1000" data-saveperformance="on">
-                <img src="../../img/web/slides/2.jpg" alt="slider-image" />
-                <div class="tp-caption sfl title-slide center" data-x="40" data-y="111" data-speed="1000" data-start="1000" data-easing="Power3.easeInOut">
-                   健康美味<br>
+                <img src="../../img/web/slides/2.jpg" alt="slider-image"/>
+                <div class="tp-caption sfl title-slide center" data-x="40" data-y="111" data-speed="1000"
+                     data-start="1000" data-easing="Power3.easeInOut">
+                    健康美味<br>
                 </div>
-                <div class="tp-caption sfr desc-slide center" data-x="40" data-y="272" data-speed="1000" data-start="1500" data-easing="Power3.easeInOut">
+                <div class="tp-caption sfr desc-slide center" data-x="40" data-y="272" data-speed="1000"
+                     data-start="1500" data-easing="Power3.easeInOut">
 
                 </div>
-               <!-- <div class="tp-caption sfl flat-button-slider bg-button-slider-15416e" data-x="40" data-y="323" data-speed="1000" data-start="2000" data-easing="Power3.easeInOut"><a href="#">查看详情</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-chevron-right"></i></div>
+                <!-- <div class="tp-caption sfl flat-button-slider bg-button-slider-15416e" data-x="40" data-y="323" data-speed="1000" data-start="2000" data-easing="Power3.easeInOut"><a href="#">查看详情</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-chevron-right"></i></div>
 
-                <div class="tp-caption sfr flat-button-slider" data-x="268" data-y="323" data-speed="1000" data-start="2000" data-easing="Power3.easeInOut"><a href="#">前往预约</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-chevron-right"></i></div>-->
+                 <div class="tp-caption sfr flat-button-slider" data-x="268" data-y="323" data-speed="1000" data-start="2000" data-easing="Power3.easeInOut"><a href="#">前往预约</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-chevron-right"></i></div>-->
 
             </li>
 
             <li data-transition="slidedown" data-slotamount="7" data-masterspeed="1000" data-saveperformance="on">
-                <img src="../../img/web/slides/3.jpg" alt="slider-image" />
-                <div class="tp-caption sfl title-slide center" data-x="40" data-y="111" data-speed="1000" data-start="1000" data-easing="Power3.easeInOut">
+                <img src="../../img/web/slides/3.jpg" alt="slider-image"/>
+                <div class="tp-caption sfl title-slide center" data-x="40" data-y="111" data-speed="1000"
+                     data-start="1000" data-easing="Power3.easeInOut">
                     <br>
                 </div>
-                <div class="tp-caption sfr desc-slide center" data-x="40" data-y="272" data-speed="1000" data-start="1500" data-easing="Power3.easeInOut">
+                <div class="tp-caption sfr desc-slide center" data-x="40" data-y="272" data-speed="1000"
+                     data-start="1500" data-easing="Power3.easeInOut">
 
                 </div>
                 <!--                         <div class="tp-caption sfl flat-button-slider" data-x="40" data-y="323" data-speed="1000" data-start="2000" data-easing="Power3.easeInOut"><a href="#">查看详情</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-chevron-right"></i></div> -->
@@ -204,9 +123,9 @@
         <h1 class="pull-left" style="line-height: 30px;">最新商品</h1>
         <button class="btn btn-success btn-small pull-right">更多商品</button>
     </div>
-    <div class="goods_list" id="goodsList">
+    <div class="goods_list">
         <ul>
-            <li>
+            <li onclick="location.href='order_confirm.html';">
                 <img src="../../img/snowlink.ico">
                 <p class="goods_name">JONSBO乔思伯UMX4 ATX大板 中塔式</p>
                 <p class="goods_desc">全兼容240水冷 支持ATX大主板 30cm内长显卡</p>
@@ -215,7 +134,7 @@
             </li>
             <li>
                 <img src="../../img/snowlink.ico">
-                <p class="goods_name">JONSBO乔思伯UMX4 ATX大板 中塔式</p>
+                <p class="goods_name">JONSBO乔思伯UMX4 ATX大板</p>
                 <p class="goods_desc">全兼容240水冷 支持ATX大主板 30cm内长显卡</p>
                 <p class="goods_price pull-left">¥668</p>
 

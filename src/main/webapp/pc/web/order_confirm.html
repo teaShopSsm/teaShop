@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>确认订单</title>
+    <link rel="stylesheet" href="../../css/web/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../../css/web/style.css">
+    <style>
+        .goods {
+            padding-top: 10px;
+            height: 250px;
+        }
+
+        .goods .goods_pic {
+            width: 220px;
+            height: 220px;
+            display: block;
+            margin-left: 50px;
+            float: left;
+        }
+
+        .goods .goods_info {
+            width: 730px;
+            display: block;
+            float: right;
+        }
+
+        .goods .goods_info .goods_name {
+            font-size: 18px;
+            line-height: 22px;
+            padding: 5px;
+            font-weight: bold;
+        }
+
+        .goods .goods_info .goods_desc {
+            font-size: 14px;
+            line-height: 18px;
+            padding: 5px;
+            color: #666;
+        }
+
+        .goods .goods_info .goods_price {
+            font-size: 22px;
+            line-height: 40px;
+            padding: 5px;
+            color: red;
+        }
+
+        .goods_num {
+            padding: 5px;
+        }
+
+        .goods_num span {
+            line-height: 30px;
+        }
+
+    </style>
+</head>
+<body>
+<div class="head">
+    <div class="head_logo"><span>茶饮商铺</span></div>
+</div>
+<div class="nav">
+    <ul>
+        <li><a href="#">首页</a></li>
+        <li><a href="#">商品列表</a></li>
+        <li><a href="#">购物车</a></li>
+        <li><a href="#">个人中心</a></li>
+
+        <li class="">
+            <a href="/TeaShop/loginOut" class="">
+                <span>注销</span>
+            </a>
+        </li>
+    </ul>
+</div>
+
+<div class="container">
+    <div class="goods">
+        <img class="goods_pic" src="../../img/demo-1-bg.jpg">
+        <div class="goods_info">
+            <div class="goods_name">阿杜gas大公司的发生的</div>
+            <div class="goods_desc">asdfas抒发抒发萨斯大是大非大厦法定身份asdfasdfgads</div>
+            <div class="goods_price">￥666</div>
+            <div class="goods_num">
+                <span>数量：</span>
+                <div class="input-group input-group-sm pull-right" style="width: 120px;margin-right: 540px">
+                    <span class="input-group-btn">
+                        <button class="btn btn-primary" type="button" id="jian">➖</button>
+                    </span>
+                    <input type="text" class="form-control" id="number" readonly value="1" style="text-align: center">
+                    <span class="input-group-btn">
+                        <button class="btn btn-primary" type="button" id="jia">➕</button>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-sm-2 control-label" style="text-align: right;line-height: 36px;">收件人:</label>
+        <div class="col-sm-2"><input type="text" class="form-control" id="username"></div>
+        <label class="col-sm-2 control-label" style="text-align: right;line-height: 36px;">手机号:</label>
+        <div class="col-sm-2"><input type="text" class="form-control" id="phone"></div>
+    </div>
+    <div class="form-group row">
+        <label class="col-sm-2 control-label" style="text-align: right;line-height: 36px;">收货地址:</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="address">
+        </div>
+    </div>
+    <button class="btn btn-primary btn-lg pull-right" style="margin: 20px;" type="button" id="submitOrder">提交订单</button>
+</div>
+
+<script src="../../js/jquery.min.js"></script>
+<script src="../../plugins/bootstrap/js/bootstrap.min.js"></script>
+
+<script>
+    //商品id
+    var goodsId = getQueryString(goodsId);
+    //初始化
+    var init = function () {
+        //查询商品详情
+        $.ajax({
+            url: "xxx",
+            type: "get",
+            dataType: "json",
+            data: {goodsId: goodsId},
+            success: function (data) {
+                $(".goods_name").html("xxx");
+                $(".goods_desc").html("xxx");
+                $(".goods_price").html("xxx");
+            }
+        });
+    }();
+
+
+    //数量加1
+    $("#jia").click(function () {
+        var num = $("#number").val();
+        $("#number").val(++num);
+    });
+    //数量减1
+    $("#jian").click(function () {
+        var num = $("#number").val();
+        if (num > 1) {
+            $("#number").val(--num);
+        } else {
+            $("#number").val(1);
+        }
+
+    });
+
+    //提交订单
+    $("#submitOrder").click(function () {
+        var username = $("#username").val();
+        var phone = $("#phone").val();
+        var address = $("#address").val();
+        var number = $("#number").val();
+        $.ajax({
+            url: "xxx",
+            type: "get",
+            dataType: "json",
+            data: {
+                goodsId: goodsId,
+                username: username,
+                phone: phone,
+                address: address,
+                number: number
+            },
+            success: function (data) {
+                $(".goods_name").html("xxx");
+                $(".goods_desc").html("xxx");
+                $(".goods_price").html("xxx");
+            }
+        });
+    });
+
+
+    function getQueryString(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+        var reg_rewrite = new RegExp("(^|/)" + name + "/([^/]*)(/|$)", "i");
+        var r = window.location.search.substr(1).match(reg);
+        var q = window.location.pathname.substr(1).match(reg_rewrite);
+        if (r != null) {
+            return unescape(r[2]);
+        } else if (q != null) {
+            return unescape(q[2]);
+        } else {
+            return null;
+        }
+    }
+</script>
+</body>
+</html>

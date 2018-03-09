@@ -107,9 +107,9 @@ public class LoginController {
 						}
 					}
 					if (isLogin == true) {
-						if(1 == userRoleList.get(0).getRoleId() || 14 == userRoleList.get(0).getRoleId()){
+						if(1 == userRoleList.get(0).getRoleId() || 2 == userRoleList.get(0).getRoleId()){
 							message.setFlag(Const.OK);
-						}else if(13 == userRoleList.get(0).getRoleId()){
+						}else if(3 == userRoleList.get(0).getRoleId()){
 							message.setFlag(Const.OKGK);
 						}else {
 							message.setFlag(Const.OKGK);
