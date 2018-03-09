@@ -174,7 +174,7 @@
 	FROM
 		sys_page
 	 where 
-      PAGE_ID = #{pageId}
+      PAGE_ID = #{prePageId}
       and is_deleted =0 
 	</select>
 	

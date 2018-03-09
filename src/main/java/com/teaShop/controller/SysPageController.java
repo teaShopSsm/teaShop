@@ -69,7 +69,10 @@ public class SysPageController {
 	@RequestMapping("/getPrePageIdById")
 	public void getPrePageIdById(HttpServletRequest request, HttpServletResponse response){
 		try {
-			int pageId = Integer.parseInt(request.getParameter("pageId"));
+			int pageId = 0;
+			if(!request.getParameter("pageId").equals("")){
+				pageId = Integer.parseInt(request.getParameter("pageId"));
+			}
 			message = new Message();
 			message.setFlag(Const.OK);
 			message.setMessage(Const.NORMAL);
@@ -115,7 +118,7 @@ public class SysPageController {
 				return;
 			}
 			String levelCode = service.getLevelCodeByPrePageId(page);
-			if(levelCode == null || "".equals(levelCode) || "" == levelCode){
+			if("null".equals(levelCode)||levelCode == null || "".equals(levelCode) || "" == levelCode){
 				levelCode = service.getLevelCodeByPageId(page);
 				page.setLevelCode(levelCode + "10");
 			}else{

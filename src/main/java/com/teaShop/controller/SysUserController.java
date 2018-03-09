@@ -245,8 +245,8 @@ public class SysUserController {
 			String phone = request.getParameter("phone");
 			String desc = request.getParameter("desc");
 			String userType = request.getParameter("userType");
-			String companyId = request.getParameter("companyId");
 			user.setUserName(userName);
+
 			message = new Message();
 			int count = service.getPhone(phone);
 			if (count > 0) {
@@ -255,11 +255,9 @@ public class SysUserController {
 				response.getWriter().print(JSONArray.toJSON(message));
 				return;
 			}
-			user.setCompanyId(Integer.parseInt(companyId));
 			if (bean.getIsSystem() == 1) {
 				user.setIsSystem(2);
 			} else if (bean.getIsSystem() == 2) {
-				user.setCompanyId(bean.getCompanyId());
 				user.setIsSystem(3);
 			} else {
 				message.setFlag(Const.INSUFFICIENT_PERMISSIONS);
@@ -273,7 +271,7 @@ public class SysUserController {
 				response.getWriter().print(JSONArray.toJSON(message));
 				return;
 			}
-			user.setPassword(md5.getMd5(password));
+			user.setPassword(password);
 			user.setEmail(email);
 			user.setPhone(phone);
 			user.setDescription(desc);
@@ -324,7 +322,6 @@ public class SysUserController {
 			user.setDescription(userDesc);
 			user.setUserId(loginUser.getUserId());
 			user.setIsSystem(loginUser.getIsSystem());
-			user.setCompanyId(loginUser.getCompanyId());
 			user.setPageNumber((pageNumber - 1) * pageSize);
 			user.setPageSize(pageSize);
 			JSONObject obj = service.blurryUser(user);
