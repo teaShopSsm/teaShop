@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.teashop.mapper.TeaGoodsMapper" >
-  <resultMap id="BaseResultMap" type="com.teashop.entity.TeaGoods" >
+  <resultMap id="BaseResultMap" type="com.teaShop.bean.TeaGoods" >
     <!--
       WARNING - @mbg.generated
     -->
@@ -14,4 +14,10 @@
     <result column="status" property="status" jdbcType="INTEGER" />
     <result column="addtime" property="addtime" jdbcType="TIMESTAMP" />
   </resultMap>
+
+  <select id="getGoodsByAddtime" resultType="com.teaShop.bean.TeaGoods" >
+    SELECT  t.*
+    FROM tea_goods t
+    ORDER BY  t.addtime DESC
+  </select>
 </mapper>

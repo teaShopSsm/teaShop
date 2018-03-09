@@ -16,10 +16,8 @@ import javax.persistence.Table;
 import java.io.Serializable;
 import java.util.Date;
 
-@Table(name = "tea_goods")
 public class TeaGoods implements Serializable {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     private String id;
 
     private String goodsname;
