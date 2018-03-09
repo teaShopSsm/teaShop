@@ -53,7 +53,7 @@ function login(){
                          //swal('成功', '登陆成功！！', 'success');
                          window.location.href="starter.html";
                      }else if(data.flag == 1){//顾客登陆
-                         window.location.href="../../pc/web/index_web.html";
+                         window.location.href="pc/web/index_web.html";
 					 }else{
                          swal('错误', '账号或密码错误！', 'error');
                      }
