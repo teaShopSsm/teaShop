@@ -7,7 +7,7 @@ $(document).ready(function() {
 //查询所有商品
 function GoodsQuery(){
     $.ajax({
-        url:'../goods/getGoodsByAddtime',
+        url:'/TeaShop/web/getGoodsByAddtime',
         type:'get',
         //dataType:'json',
         success:function(data){
@@ -21,7 +21,8 @@ function GoodsQuery(){
                 "</li>"
             }
             html += "</ul>"
-            document.getElementById('goodsList').innerHTML = html;
+            $("#goodsList").html(html)
+
         },
         error:function(data){
             swal('错误', '加载失败！', 'error');

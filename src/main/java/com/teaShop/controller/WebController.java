@@ -19,11 +19,12 @@ public class WebController {
     @RequestMapping("getGoodsByAddtime")
     public List<TeaGoods> getGoodsByAddtime(HttpServletRequest request, HttpServletResponse response){
         try {
-            teaWebService.getGoodsByAddtime();
+            return teaWebService.getGoodsByAddtime();
         } catch (Exception e) {
             e.printStackTrace();
+            return null;
         }
-        return null;
+
     }
 
 }
