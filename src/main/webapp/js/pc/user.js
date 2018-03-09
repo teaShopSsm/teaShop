@@ -614,12 +614,9 @@ function unBindUserRole(roleId) {
  * 添加用户
  */
 var userType = {
-    2:'冷库管理人员',
-    3:'冷库机房制冷工',
-    4:'工程公司',
-    5:'制冷设备商',
-    6:'冷库租户',
-    7:'系统管理员'
+    1:'超级管理员',
+    2:'商户',
+    3:'会员'
 };
 function userInsert() {
     $('#userMessageInsert').modal( {
@@ -688,7 +685,6 @@ function insertUser() {
 
     var desc = $('#userDescInsert').val();
     var userType = $("#userTypeInsert").val();
-    var companyId = $('#companyInsert').selectpicker('val');
     $.ajax( {
         type : 'post',
         url : '../user/addUser',
@@ -699,7 +695,6 @@ function insertUser() {
             email : email,
             phone : phone,
             desc : desc,
-            companyId:companyId,
             userType : userType
         },
         dataType : 'json',

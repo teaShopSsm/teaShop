@@ -376,12 +376,12 @@ function insertPage() {
 			}
 		}
 	});
-	if (!flag) {
-		if (!pageUrl) {
-			swal('错误', '请输入菜单路径', 'error');
-			return;
-		}
-	}
+	// if (!flag) {
+	// 	if (!pageUrl) {
+	// 		swal('错误', '请输入菜单路径', 'error');
+	// 		return;
+	// 	}
+	// }
 
 	var pageIcon = $('#pageIconInsert').val();
 	var pageOrder = $('#pageOrderCodeInsert').val();
