@@ -35,6 +35,8 @@
           <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-core:2.7.4" />
           <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.7.4" />
           <element id="library" level="project" name="Maven: com.alibaba:fastjson:1.2.4" />
+          <element id="library" level="project" name="Maven: tk.mybatis:mapper:3.5.2" />
+          <element id="library" level="project" name="Maven: javax.persistence:persistence-api:1.0" />
         </element>
       </element>
       <element id="directory" name="META-INF">

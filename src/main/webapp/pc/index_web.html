@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <title>首页</title>
     <link rel="stylesheet" href="../plugins/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../plugins/swiper-4.1.6/css/swiper.min.css">
     <style>
         html, body, div, span, applet, object, iframe,
         h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -60,12 +59,16 @@
         .head {
             width: 100%;
             height: 100px;
+            background-color: #1F4E78;
         }
 
         .head .head_logo {
             width: 1080px;
             height: 100px;
             margin: 0 auto;
+            line-height: 100px;
+            font-size: 50px;
+            color: white;
         }
 
         .container {
@@ -89,6 +92,7 @@
             font-weight: 600;
             float: left;
             margin: 4px 10px 4px 4px;
+            margin-left: 40px;
         }
 
         .goods_list {
@@ -134,19 +138,15 @@
 </head>
 <body>
 <div class="head">
-    <div class="head_logo"><img style="height:100%;" src="../img/tlogo.jpg"></div>
+    <div class="head_logo"><span>茶饮商铺</span></div>
 </div>
 <div class="nav">
     <ul>
-        <li><a href="#">test斯蒂芬</a></li>
-        <li><a href="#">安世高</a></li>
-        <li><a href="#">按时到岗</a></li>
-        <li><a href="#">请问额发</a></li>
-        <li><a href="#">test斯蒂芬</a></li>
-        <li><a href="#">test斯蒂芬</a></li>
-        <li><a href="#">test斯蒂芬</a></li>
-        <li><a href="#">test斯蒂芬</a></li>
-        <li><a href="#">过分的</a></li>
+        <li><a href="#">首页</a></li>
+        <li><a href="#">商品列表</a></li>
+        <li><a href="#">购物车</a></li>
+        <li><a href="#">个人中心</a></li>
+
 
         <li class="">
             <a href="/TeaShop/loginOut" class="" >
@@ -155,16 +155,50 @@
         </li>
     </ul>
 </div>
-<!-- Swiper -->
-<div class="swiper-container">
-    <div class="swiper-wrapper">
-        <div class="swiper-slide"><img src="../img/index1.jpg"></div>
-        <div class="swiper-slide"><img src="../img/index2.jpg"></div>
-        <div class="swiper-slide"><img src="../img/index3.jpg"></div>
+
+<!-- Slider -->
+<div class="tp-banner-container">
+    <div class="tp-banner" >
+        <ul>
+            <li data-transition="random-static" data-slotamount="7" data-masterspeed="1000" data-saveperformance="on">
+                <img src="../img/index1.jpg" alt="slider-image" />
+                <div class="tp-caption sfl title-slide center" data-x="40" data-y="111" data-speed="1000" data-start="1000" data-easing="Power3.easeInOut">
+                    累计使用量最多<br>
+                </div>
+                <div class="tp-caption sfr desc-slide center" data-x="40" data-y="272" data-speed="1000" data-start="1500" data-easing="Power3.easeInOut">${equsy.model}
+                </div>
+                <div class="tp-caption sfl flat-button-slider" data-x="40" data-y="323" data-speed="1000" data-start="2000" data-easing="Power3.easeInOut"><a href="${pageContext.request.contextPath}/web/index/sharing_detail.do?id=${equsy.id}">前往预约</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-chevron-right"></i></div>
+            </li>
+
+            <li data-transition="random-static" data-slotamount="7" data-masterspeed="1000" data-saveperformance="on">
+                <img src=" ../img/index2.jpg" alt="slider-image" />
+                <div class="tp-caption sfl title-slide center" data-x="40" data-y="111" data-speed="1000" data-start="1000" data-easing="Power3.easeInOut">
+                    最新购置<br>钢筋腐蚀度测定仪
+                </div>
+                <div class="tp-caption sfr desc-slide center" data-x="40" data-y="272" data-speed="1000" data-start="1500" data-easing="Power3.easeInOut">
+                    Concese strength 110MPa;Ultrasmic;Rebar cocation;Corrosion;Maturity And Tempratare Control;Moirsture.
+                </div>
+                <div class="tp-caption sfl flat-button-slider bg-button-slider-15416e" data-x="40" data-y="323" data-speed="1000" data-start="2000" data-easing="Power3.easeInOut"><a href="#">查看详情</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-chevron-right"></i></div>
+
+                <div class="tp-caption sfr flat-button-slider" data-x="268" data-y="323" data-speed="1000" data-start="2000" data-easing="Power3.easeInOut"><a href="#">前往预约</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-chevron-right"></i></div>
+
+            </li>
+
+            <li data-transition="slidedown" data-slotamount="7" data-masterspeed="1000" data-saveperformance="on">
+                <img src="../img/index3.jpg" alt="slider-image" />
+                <div class="tp-caption sfl title-slide center" data-x="40" data-y="111" data-speed="1000" data-start="1000" data-easing="Power3.easeInOut">
+                    仪器预约排行top1<br>
+                </div>
+                <div class="tp-caption sfr desc-slide center" data-x="40" data-y="272" data-speed="1000" data-start="1500" data-easing="Power3.easeInOut">
+
+                </div>
+                <!--                         <div class="tp-caption sfl flat-button-slider" data-x="40" data-y="323" data-speed="1000" data-start="2000" data-easing="Power3.easeInOut"><a href="#">查看详情</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-chevron-right"></i></div> -->
+                <div class="tp-caption sfl flat-button-slider" data-x="40" data-y="323" data-speed="1000" data-start="2000" data-easing="Power3.easeInOut"><a href="${pageContext.request.contextPath}/web/index/sharing_detail.do?id=${equyy.id}">前往预约</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-chevron-right"></i></div>
+            </li>
+        </ul>
     </div>
-    <!-- Add Pagination -->
-    <div class="swiper-pagination"></div>
 </div>
+
 <div class="container">
     <div style="display: block;height: 30px;">
         <h1 class="pull-left" style="line-height: 30px;">最新商品</h1>
@@ -234,14 +268,19 @@
 
 <script src="../js/jquery.min.js"></script>
 <script src="../plugins/bootstrap/js/bootstrap.min.js"></script>
-<script src="../plugins/swiper-4.1.6/js/swiper.min.js"></script>
-<script>
-    var swiper = new Swiper('.swiper-container', {
-        pagination: {
-            el: '.swiper-pagination',
-            dynamicBullets: true,
-        },
-    });
-</script>
+<!-- Javascript -->
+<script type="text/javascript" src="../plugins/web/jquery.easing.js"></script>
+<script type="text/javascript" src="../plugins/web/owl.carousel.js"></script>
+<script type="text/javascript" src="../plugins/web/jquery-waypoints.js"></script>
+<script type="text/javascript" src="../plugins/web/jquery.fancybox.js"></script>
+<script type="text/javascript" src="../plugins/web/jquery.cookie.js"></script>
+<script type="text/javascript" src="../plugins/web/ditu.js"></script>
+<script type="text/javascript" src="../plugins/web/smoothscroll.js"></script>
+<script type="text/javascript" src="../plugins/web/main.js"></script>
+<!-- Revolution Slider -->
+<script type="text/javascript" src="../plugins/web/jquery.themepunch.tools.min.js"></script>
+<script type="text/javascript" src="../plugins/web/jquery.themepunch.revolution.min.js"></script>
+<script type="text/javascript" src="../plugins/web/slider.js"></script>
+
 </body>
 </html>
