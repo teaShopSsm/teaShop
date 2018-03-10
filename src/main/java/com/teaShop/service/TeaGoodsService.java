@@ -1,18 +1,15 @@
-package com.teaShop.dao;
+package com.teaShop.service;
 
-import com.teaShop.bean.SysUserRole;
 import com.teaShop.bean.TeaGoods;
-import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Repository
-public interface TeaGoodsDao {
+public interface TeaGoodsService {
     /**
      *查询所有商品
      *
      */
-    public List<TeaGoods> getGoodsByAddtime(TeaGoods teaGoods);
+    public List<TeaGoods> getGoodsByAddtime(TeaGoods teaGoods );
 
     /**
      *根据id查询商品

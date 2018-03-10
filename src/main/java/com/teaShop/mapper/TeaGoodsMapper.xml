@@ -15,9 +15,33 @@
     <result column="addtime" property="addtime" jdbcType="TIMESTAMP" />
   </resultMap>
 
-  <select id="getGoodsByAddtime"  parameterType="String" resultType="com.teaShop.bean.TeaGoods" >
+  <select id="getGoodsByAddtime" parameterType="com.teaShop.bean.TeaGoods" resultType="com.teaShop.bean.TeaGoods" >
     SELECT  t.*
     FROM tea_goods t
+    where status=1
+    and goodsname LIKE '%${goodsname}%'
+    and brief LIKE '%${brief}%'
     ORDER BY  t.addtime DESC
   </select>
+
+  <select id="getGoodsByID" parameterType="Integer" resultType="com.teaShop.bean.TeaGoods">
+    select *
+    from tea_goods
+    where id=#{id} and status=1
+  </select>
+
+  <insert id="addGoods" parameterType="com.teaShop.bean.TeaGoods">
+    insert into tea_goods(goodsname,brief,picpath,appuserid,appuser,status,addtime,price)
+    value(#{goodsname},#{brief},#{picpath},#{appuserid},#{appuser},#{status},#{addtime},#{price})
+  </insert>
+
+  <update id="updateGoods" parameterType="com.teaShop.bean.TeaGoods">
+    update tea_goods set goodsname =#{goodsname},
+    brief=#{brief},picpath=#{picpath},appuserid=#{appuserid},appuser=#{appuser},status=#{status},addtime=#{addtime},price=#{price}
+    where id=#{id}
+  </update>
+
+  <delete id="deleteGoods" parameterType="Integer">
+    delete from tea_goods where id=#{id}
+  </delete>
 </mapper>

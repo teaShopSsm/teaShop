@@ -37,7 +37,17 @@ public class TeaGoods implements Serializable {
 
     private Date addtime;
 
+    private Double price;
+
     private static final long serialVersionUID = 1L;
+
+    public Double getPrice() {
+        return price;
+    }
+
+    public void setPrice(Double price) {
+        this.price = price;
+    }
 
     /**
      * @return id
