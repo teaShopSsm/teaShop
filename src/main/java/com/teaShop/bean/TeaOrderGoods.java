@@ -21,7 +21,7 @@ public class TeaOrderGoods implements Serializable {
 
     private String orderid;
 
-    private String goodsid;
+    private Integer goodsid;
 
     @Column(name = "goods_price")
     private BigDecimal goodsPrice;
@@ -31,7 +31,16 @@ public class TeaOrderGoods implements Serializable {
 
     private String goodsname;
 
+    private String goodspic;
     private static final long serialVersionUID = 1L;
+
+    public String getGoodspic() {
+        return goodspic;
+    }
+
+    public void setGoodspic(String goodspic) {
+        this.goodspic = goodspic;
+    }
 
     /**
      * @return id
@@ -64,14 +73,14 @@ public class TeaOrderGoods implements Serializable {
     /**
      * @return goodsid
      */
-    public String getGoodsid() {
+    public Integer getGoodsid() {
         return goodsid;
     }
 
     /**
      * @param goodsid
      */
-    public void setGoodsid(String goodsid) {
+    public void setGoodsid(Integer goodsid) {
         this.goodsid = goodsid;
     }
 

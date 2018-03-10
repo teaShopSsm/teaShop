@@ -1,19 +1,32 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.teashop.mapper.TeaOrdersMapper" >
-  <resultMap id="BaseResultMap" type="com.teaShop.bean.TeaOrders" >
-    <!--
-      WARNING - @mbg.generated
-    -->
-    <id column="id" property="id" jdbcType="VARCHAR" />
-    <result column="code" property="code" jdbcType="VARCHAR" />
-    <result column="totalprice" property="totalprice" jdbcType="DECIMAL" />
-    <result column="quantity" property="quantity" jdbcType="INTEGER" />
-    <result column="username" property="username" jdbcType="VARCHAR" />
-    <result column="userid" property="userid" jdbcType="VARCHAR" />
-    <result column="telephone" property="telephone" jdbcType="VARCHAR" />
-    <result column="address" property="address" jdbcType="VARCHAR" />
-    <result column="status" property="status" jdbcType="INTEGER" />
-    <result column="addtime" property="addtime" jdbcType="TIMESTAMP" />
-  </resultMap>
+<mapper namespace="com.teaShop.dao.TeaOrdersDao">
+    <insert id="addOrder" parameterType="com.teaShop.bean.TeaGoods">
+      insert into tea_orders
+      value(#{id},#{code},#{totalprice},#{quantity},#{username},#{userid},#{telephone},#{status},#{addtime})
+    </insert>
+
+    <insert id="addOrderItem" parameterType="com.teaShop.bean.TeaOrderGoods">
+        insert into tea_order_goods
+        value(#{id},#{orderid},#{goodsid},#{goodsPrice},#{goodsQuantity},#{goodsname})
+    </insert>
+
+    <insert id="addIntegral" parameterType="com.teaShop.bean.TeaIntegral">
+        insert into tea_integral
+        value(#{id},#{quantity},#{orderid},#{userid},#{username},#{operator},#{orderprice})
+    </insert>
+
+    <select id="getOrderList" parameterType="Integer" resultType="com.teaShop.bean.dto.TeaOrderVO">
+        select T1.*,T2.goodsid,T2.goodsname,T2.goods_quantity as goodsQuantity,T2.goodspic
+        from tea_orders T1
+        left join tea_order_goods T2 on T1.id = T2.orderid
+        where T1.userid = #{userId}
+        order by T1.addtime desc
+    </select>
+
+    <select id="getIntegralList" parameterType="Integer" resultType="com.teaShop.bean.TeaIntegral">
+        select T1.*
+        from tea_integral T1
+        where T1.userid = #{userId}
+    </select>
 </mapper>
