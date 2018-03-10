@@ -46,7 +46,7 @@ public class Const {
     public static final String NAME_PASSWORD_MESSAGE = "用户名或密码错误";
 
     public static final String EXIST_PHONE = "电话号码已注册";
-
+    public static final String EXIST_USERNAME = "账号已注册";
     public static final String resetPassword = "123456";
     public static final String SAME_MESSAGE = "同名数据";
     public static final String SAME_CODE = "存在相同编码";

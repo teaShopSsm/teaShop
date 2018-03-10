@@ -119,5 +119,5 @@ public interface SysUserService {
 	public int getPhone(String phone);
 
 	public List<String> getMailList();
-
+	public int getUserCount(String username);
 }

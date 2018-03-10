@@ -18,8 +18,11 @@
 </head>
 <body>
 <script src="js/jquery.min.js"></script>
+<script src="plugins/md5/jquery.md5.js"></script>
 <script src="js/utils.js"></script>
-<script src="js/pc/login.js"></script>
+<script src="js/pc/regist.js"></script>
+
+
 <script src="plugins/sweetalert/sweetalert.min.js"></script>
 <div class="container demo-1">
     <div class="content">
@@ -28,16 +31,27 @@
             <div class="logo_box">
                 <form action="#" name="f" method="post">
                     <div class="input_outer">
-                        <span class="u_user"></span>
-                        <input name="username" id="username" class="text" style="color: #FFFFFF !important" type="text" placeholder="请输入账号">
+                        <span class="span_user">账号</span>
+                        <input name="username" id="username" class="text" style="margin-left: 100px;color: #FFFFFF !important" type="text" placeholder="请输入账号">
                     </div>
                     <div class="input_outer">
-                        <span class="us_uer"></span>
-                        <input name="password" id="password" class="text" style="color: #FFFFFF !important; position:absolute; z-index:100;"value="" type="password" placeholder="请输入密码">
+                        <span class="span_user">密码</span>
+                        <input name="password" id="password" class="text" style="margin-left: 100px;color: #FFFFFF !important; position:absolute; z-index:100;"value="" type="password" placeholder="请输入密码">
+                    </div>
+                    <div class="input_outer">
+                        <span class="span_user">确认密码</span>
+                        <input name="passwd" id="passwd" class="text" style="margin-left: 100px;color: #FFFFFF !important; position:absolute; z-index:100;"value="" type="password" placeholder="请确认密码">
+                    </div>
+                    <div class="input_outer">
+                        <span class="span_user">电话</span>
+                        <input name="phone" id="phone" class="text" style="margin-left: 100px;color: #FFFFFF !important; position:absolute; z-index:100;"value="" type="text" placeholder="请输入电话">
+                    </div>
+                    <div class="input_outer">
+                        <span class="span_user">邮箱</span>
+                        <input name="email" id="email" class="text" style="margin-left: 100px;color: #FFFFFF !important; position:absolute; z-index:100;"value="" type="text" placeholder="请输入邮箱">
                     </div>
                     <div class="mb2">
-                        <a class="act-but submit" href="javascript:;" onclick="login()" style="color: #FFFFFF">登录</a><br>
-                        <a class="act-but" style="background-color:transparent;float:right;color:white;cursor: pointer" href="regist.html">注册</a>
+                        <a class="act-but submit" href="javascript:;" onclick="regist()" style="color: #FFFFFF">注册</a>
                     </div>
                 </form>
             </div>

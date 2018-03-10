@@ -264,4 +264,10 @@
 		select email as email 
 		from sys_user
 	</select>
+	<select id="getUserCount" resultType="java.lang.Integer" parameterType="java.lang.String">
+		SELECT count(1) as count
+		from sys_user
+		where user_name=#{username}
+		AND IS_DELETED = 0
+	</select>
 </mapper>

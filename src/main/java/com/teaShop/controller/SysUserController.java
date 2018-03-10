@@ -255,21 +255,25 @@ public class SysUserController {
 				response.getWriter().print(JSONArray.toJSON(message));
 				return;
 			}
-			if (bean.getIsSystem() == 1) {
-				user.setIsSystem(2);
-			} else if (bean.getIsSystem() == 2) {
+			if(bean == null){
+				if (bean.getIsSystem() == 1) {
+					user.setIsSystem(2);
+				} else if (bean.getIsSystem() == 2) {
+					user.setIsSystem(3);
+				} else {
+					message.setFlag(Const.INSUFFICIENT_PERMISSIONS);
+					message.setMessage(Const.INSUFFICIENT_PERMISSIONS_MESSAGE);
+					response.getWriter().print(JSONArray.toJSON(message));
+					return;
+				}
+				if (!md5.getMd5(password).equals(md5.getMd5(passwd))) {
+					message.setFlag(-1);
+					message.setMessage("两次密码不一样");
+					response.getWriter().print(JSONArray.toJSON(message));
+					return;
+				}
+			}else{
 				user.setIsSystem(3);
-			} else {
-				message.setFlag(Const.INSUFFICIENT_PERMISSIONS);
-				message.setMessage(Const.INSUFFICIENT_PERMISSIONS_MESSAGE);
-				response.getWriter().print(JSONArray.toJSON(message));
-				return;
-			}
-			if (!md5.getMd5(password).equals(md5.getMd5(passwd))) {
-				message.setFlag(-1);
-				message.setMessage("两次密码不一样");
-				response.getWriter().print(JSONArray.toJSON(message));
-				return;
 			}
 			user.setPassword(password);
 			user.setEmail(email);

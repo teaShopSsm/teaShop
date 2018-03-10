@@ -129,6 +129,8 @@ public interface SysUserDao {
 
 	public int getPhone(String phone);
 
+	public int getUserCount(String username);
+
 	public List<String> getMailList();
 
 	public void deleteUserRoles(int userId);

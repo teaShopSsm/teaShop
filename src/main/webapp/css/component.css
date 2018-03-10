@@ -66,6 +66,11 @@
 	position: absolute;
 	margin: 10px 13px;
 }
+.span_user{
+	height: 25px;
+	position: absolute;
+	margin: 10px 13px;
+}
 .l-login{
 	position: absolute;
 	z-index: 1;

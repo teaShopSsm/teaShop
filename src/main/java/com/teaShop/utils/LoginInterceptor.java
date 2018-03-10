@@ -52,7 +52,7 @@ public class LoginInterceptor implements HandlerInterceptor {
 	     String requestUri = request.getRequestURI();
 	     String contextPath = request.getContextPath();
 	     String url = requestUri.substring(contextPath.length());        
-	     if ("/login1".equals(url) || "/User/isHave".equals(url)) {                  
+	     if ("/login1".equals(url) || "/User/isHave".equals(url) || "/register".equals(url)) {
 	             return true;
 	     }else {               
 	             //Integer user =  (Integer)request.getSession().getAttribute("User"); 

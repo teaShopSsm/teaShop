@@ -137,4 +137,5 @@ public class SysUserServiceImpl implements SysUserService {
 	public List<String> getMailList() {
 		return mapper.getMailList();
 	}
+	public int getUserCount(String username){return mapper.getUserCount(username);}
 }
