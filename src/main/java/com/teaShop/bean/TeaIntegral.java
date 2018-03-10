@@ -27,16 +27,16 @@ public class TeaIntegral implements Serializable {
      */
     private BigDecimal quantity;
 
-    private String orderid;
+    private int orderid;
 
-    private String userid;
+    private int userid;
 
     private String username;
 
     /**
      * 积分操作（+/-）
      */
-    private Integer operator;
+    private String operator;
 
     private BigDecimal orderprice;
 
@@ -77,28 +77,28 @@ public class TeaIntegral implements Serializable {
     /**
      * @return orderid
      */
-    public String getOrderid() {
+    public int getOrderid() {
         return orderid;
     }
 
     /**
      * @param orderid
      */
-    public void setOrderid(String orderid) {
+    public void setOrderid(int orderid) {
         this.orderid = orderid;
     }
 
     /**
      * @return userid
      */
-    public String getUserid() {
+    public int getUserid() {
         return userid;
     }
 
     /**
      * @param userid
      */
-    public void setUserid(String userid) {
+    public void setUserid(int userid) {
         this.userid = userid;
     }
 
@@ -121,7 +121,7 @@ public class TeaIntegral implements Serializable {
      *
      * @return operator - 积分操作（+/-）
      */
-    public Integer getOperator() {
+    public String getOperator() {
         return operator;
     }
 
@@ -130,7 +130,7 @@ public class TeaIntegral implements Serializable {
      *
      * @param operator 积分操作（+/-）
      */
-    public void setOperator(Integer operator) {
+    public void setOperator(String operator) {
         this.operator = operator;
     }
 

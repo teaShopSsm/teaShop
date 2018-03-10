@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.teaShop.mapper.TeaIntegralMapper" >
+<mapper namespace="com.teaShop.dao.TeaIntegralDao" >
   <resultMap id="BaseResultMap" type="com.teaShop.bean.TeaIntegral" >
     <id column="id" property="id" jdbcType="VARCHAR" />
     <result column="quantity" property="quantity" jdbcType="DECIMAL" />
@@ -10,4 +10,26 @@
     <result column="operator" property="operator" jdbcType="INTEGER" />
     <result column="orderprice" property="orderprice" jdbcType="DECIMAL" />
   </resultMap>
+
+  <!--查询-->
+  <select id="getAll" parameterType="com.teaShop.bean.TeaIntegral" resultType="com.teaShop.bean.TeaIntegral">
+      select * from tea_integral where username LIKE '%${username}%'
+  </select>
+
+  <!--查询某个积分记录-->
+  <select id="getOneById" parameterType="Integer" resultType="com.teaShop.bean.TeaIntegral">
+    select * from tea_integral where id=#{id}
+  </select>
+
+  <!--修改-->
+  <update id="updateIntegral" parameterType="com.teaShop.bean.TeaIntegral">
+    update tea_integral
+    SET quantity = #{quantity},
+      orderid = #{orderid},
+      userid = #{userid},
+      username = #{username},
+      operator =#{operator},
+      orderprice = #{orderprice}
+    where id = #{id}
+  </update>
 </mapper>

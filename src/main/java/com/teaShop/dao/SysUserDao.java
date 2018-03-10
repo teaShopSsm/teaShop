@@ -139,4 +139,8 @@ public interface SysUserDao {
 
 	// 添加用户时，选择用户类型，并向用户-角色表中插入记录
 	public int addUserRole(SysUser user);
+
+	public Integer getUserIdByUserName(String username);
+
+	public int getUserIsHuiYuan(String username);
 }

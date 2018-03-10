@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.teashop.mapper.TeaOrdersMapper" >
+<mapper namespace="com.teaShop.dao.TeaOrdersDao" >
   <resultMap id="BaseResultMap" type="com.teaShop.bean.TeaOrders" >
     <!--
       WARNING - @mbg.generated
@@ -16,4 +16,10 @@
     <result column="status" property="status" jdbcType="INTEGER" />
     <result column="addtime" property="addtime" jdbcType="TIMESTAMP" />
   </resultMap>
+
+  <select id="orderIsHave" parameterType="Integer" resultType="Integer">
+    select count(1)
+    from tea_orders
+    where id=#{orderid}
+  </select>
 </mapper>

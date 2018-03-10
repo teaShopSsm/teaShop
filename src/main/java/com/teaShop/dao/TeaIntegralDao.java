@@ -1,10 +1,12 @@
-package com.teaShop.service;
+package com.teaShop.dao;
 
 import com.teaShop.bean.TeaIntegral;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-public interface TeaIntegralService {
+@Repository
+public interface TeaIntegralDao {
     //查询所有
     public List<TeaIntegral> getAll(TeaIntegral teaIntegral);
 
@@ -13,5 +15,4 @@ public interface TeaIntegralService {
 
     //更新
     public int updateIntegral(TeaIntegral teaIntegral);
-
 }

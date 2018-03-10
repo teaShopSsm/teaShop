@@ -11,4 +11,6 @@ public interface OrdersService {
      * @return
      */
     public List<TeaOrders> getAll();
+
+    public int orderIsHave(int orderid);
 }

@@ -120,4 +120,6 @@ public interface SysUserService {
 
 	public List<String> getMailList();
 	public int getUserCount(String username);
+	public Integer getUserIdByUserName(String username);
+	public int getUserIsHuiYuan(String username);
 }

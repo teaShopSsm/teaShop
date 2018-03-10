@@ -270,4 +270,17 @@
 		where user_name=#{username}
 		AND IS_DELETED = 0
 	</select>
+
+	<select id="getUserIdByUserName" parameterType="String" resultType="Integer">
+		select user_id
+		from sys_user
+		where user_name = #{username}
+	</select>
+	<select id="getUserIsHuiYuan" resultType="java.lang.Integer" parameterType="java.lang.String">
+		SELECT count(1) as count
+		from sys_user
+		where user_name=#{username}
+		AND IS_DELETED = 0 and user_type=3
+	</select>
+
 </mapper>
