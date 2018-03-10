@@ -16,7 +16,7 @@ public class TeaGoodsWebServiceImpl implements TeaGoodsWebService {
     private TeaGoodsDao teaGoodsDao;
     public List<TeaGoods> getGoodsByAddtime(){
         try {
-            return teaGoodsDao.getGoodsByAddtime();
+            return teaGoodsDao.getGoodsByAddtime(null);
         } catch (Exception e){
             e.printStackTrace();
             return  null;
