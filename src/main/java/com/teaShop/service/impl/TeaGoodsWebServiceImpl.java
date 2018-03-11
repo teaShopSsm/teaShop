@@ -50,8 +50,8 @@ public class TeaGoodsWebServiceImpl implements TeaGoodsWebService {
     public void saveOrder(TeaGoodsDTO teaGoodsDTO, Integer userId, String userName) {
         //保存订单
         TeaOrders teaOrders = new TeaOrders();
-        String orderId = UUID.randomUUID().toString().replaceAll("-", "");
-        teaOrders.setId(orderId);
+        //String orderId = UUID.randomUUID().toString().replaceAll("-", "");
+        //teaOrders.setId(orderId);
         teaOrders.setAddress(teaGoodsDTO.getAddress());
         teaOrders.setAddtime(new Date());
         teaOrders.setCode("" + System.currentTimeMillis());
@@ -59,9 +59,9 @@ public class TeaGoodsWebServiceImpl implements TeaGoodsWebService {
         teaOrders.setTelephone(teaGoodsDTO.getMobile());
         BigDecimal totalPrice = teaGoodsDTO.getPrice().multiply(new BigDecimal(teaGoodsDTO.getNumber()));
         teaOrders.setTotalprice(totalPrice);
-        teaOrders.setUserid(String.valueOf(userId));
+        teaOrders.setUserid(userId);
         teaOrders.setUsername(teaGoodsDTO.getUserName());
-        teaOrdersDao.addOrder(teaOrders);
+        int orderId = teaOrdersDao.addOrder(teaOrders);
         //保存订单项
         TeaOrderGoods teaOrderGoods = new TeaOrderGoods();
         teaOrderGoods.setId(UUID.randomUUID().toString().replaceAll("-", ""));
@@ -70,16 +70,16 @@ public class TeaGoodsWebServiceImpl implements TeaGoodsWebService {
         teaOrderGoods.setGoodsPrice(teaGoodsDTO.getPrice());
         teaOrderGoods.setGoodsQuantity(teaGoodsDTO.getNumber());
         teaOrderGoods.setGoodspic(teaGoodsDTO.getGoodspic());
-        teaOrderGoods.setOrderid(orderId);
+        teaOrderGoods.setOrderid(String.valueOf(orderId));
         teaOrdersDao.addOrderItem(teaOrderGoods);
         //新增积分
         TeaIntegral teaIntegral = new TeaIntegral();
         teaIntegral.setId(UUID.randomUUID().toString().replaceAll("-", ""));
-        teaIntegral.setOperator(1);//1加
+        teaIntegral.setOperator("1");//1加
         teaIntegral.setOrderid(orderId);
         teaIntegral.setOrderprice(totalPrice);
         teaIntegral.setQuantity(totalPrice.divide(new BigDecimal(10)));
-        teaIntegral.setUserid(String.valueOf(userId));
+        teaIntegral.setUserid(userId);
         teaIntegral.setUsername(userName);
         teaOrdersDao.addIntegral(teaIntegral);
     }

@@ -17,15 +17,11 @@
         <result column="addtime" property="addtime" jdbcType="TIMESTAMP" />
     </resultMap>
 
-    <select id="orderIsHave" parameterType="Integer" resultType="Integer">
-        select count(1)
-        from tea_orders
-        where id=#{orderid}
-    </select>
 
-    <insert id="addOrder" parameterType="com.teaShop.bean.TeaGoods">
-      insert into tea_orders
-      value(#{id},#{code},#{totalprice},#{quantity},#{username},#{userid},#{telephone},#{status},#{addtime})
+
+    <insert id="addOrder" parameterType="com.teaShop.bean.TeaGoods" useGeneratedKeys="true" keyColumn="id">
+      insert into tea_orders(code,totalprice,quantity,username,userid,telephone,status,addtime)
+      value(#{code},#{totalprice},#{quantity},#{username},#{userid},#{telephone},#{status},#{addtime})
     </insert>
 
     <insert id="addOrderItem" parameterType="com.teaShop.bean.TeaOrderGoods">
@@ -51,4 +47,37 @@
         from tea_integral T1
         where T1.userid = #{userId}
     </select>
+  <select id="getAll" parameterType="com.teaShop.bean.TeaOrders" resultType="com.teaShop.bean.TeaOrders">
+    select * from tea_orders
+    where username like '%${username}%'
+    <if test="#{status} != null">
+        and  status = #{status}
+    </if>
+
+  </select>
+
+  <select id="getOneById" parameterType="Integer" resultType="com.teaShop.bean.TeaOrders">
+    select * from tea_orders where id=#{id}
+  </select>
+
+  <select id="orderIsHave" parameterType="Integer" resultType="Integer">
+    select count(1)
+    from tea_orders
+    where id=#{orderid}
+  </select>
+
+  <update id="editOrders" parameterType="Integer">
+    update tea_orders SET
+      code=#{code},
+      totalprice=#{totalprice},
+      quantity=#{quantity},
+      username=#{username},
+      userid=#{userid},
+      telephone=#{telephone},
+      address=#{address},
+      status=#{status},
+      addtime=#{addtime}
+      where id=#{id}
+
+  </update>
 </mapper>

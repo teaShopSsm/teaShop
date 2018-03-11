@@ -10,7 +10,9 @@ public interface OrdersService {
      * 查询所有订单
      * @return
      */
-    public List<TeaOrders> getAll();
+    public List<TeaOrders> getAll(TeaOrders teaOrders);
+    public TeaOrders getOneById(int id);
+    public int editOrder(TeaOrders teaOrders);
 
     public int orderIsHave(int orderid);
 }

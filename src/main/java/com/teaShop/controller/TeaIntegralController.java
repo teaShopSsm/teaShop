@@ -100,7 +100,6 @@ public class TeaIntegralController {
         try{
             String username = request.getParameter("username");
             int flag = userService.getUserIsHuiYuan(username);
-            System.out.println("flag:" + flag);
             message = new Message();
 
             if(flag > 0){
