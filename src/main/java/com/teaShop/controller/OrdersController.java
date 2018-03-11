@@ -21,7 +21,7 @@ import java.io.IOException;
 import java.util.List;
 
 @Controller
-@RequestMapping("orders")
+@RequestMapping("/teaOrders")
 public class OrdersController {
 
     private Message message;
