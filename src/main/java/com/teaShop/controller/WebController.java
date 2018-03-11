@@ -1,22 +1,18 @@
 package com.teaShop.controller;
 
 import com.alibaba.fastjson.JSONObject;
+import com.teaShop.bean.SysUser;
 import com.teaShop.bean.TeaGoods;
 import com.teaShop.bean.TeaIntegral;
-import com.teaShop.bean.TeaOrderGoods;
-import com.teaShop.bean.User;
 import com.teaShop.bean.dto.TeaGoodsDTO;
 import com.teaShop.bean.dto.TeaOrderVO;
 import com.teaShop.service.TeaGoodsWebService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.math.BigDecimal;
 import java.util.List;
 
 @RestController
@@ -46,21 +42,23 @@ public class WebController {
     }
 
     @RequestMapping("/saveOrder")
-    public void saveOrder(TeaGoodsDTO teaGoodsDTO, HttpServletRequest request) {
+    public JSONObject saveOrder(TeaGoodsDTO teaGoodsDTO, HttpServletRequest request) {
         try {
             HttpSession session = request.getSession();
-            User user = (User) session.getAttribute("user");
+            SysUser user = (SysUser) session.getAttribute("user");
             teaWebService.saveOrder(teaGoodsDTO, user.getUserId(), user.getUserName());
         } catch (Exception e) {
             e.printStackTrace();
         }
+        JSONObject data = new JSONObject();
+        return data;
     }
 
     @RequestMapping("/getUserInfo")
-    public User getUserInfo(HttpServletRequest request) {
+    public SysUser getUserInfo(HttpServletRequest request) {
         try {
             HttpSession session = request.getSession();
-            User user = (User) session.getAttribute("user");
+            SysUser user = (SysUser) session.getAttribute("user");
             return user;
         } catch (Exception e) {
             e.printStackTrace();
@@ -71,14 +69,19 @@ public class WebController {
     @RequestMapping("/getOrderList")
     public List<TeaOrderVO> getOrderList(HttpServletRequest request) {
         HttpSession session = request.getSession();
-        User user = (User) session.getAttribute("user");
+        SysUser user = (SysUser) session.getAttribute("user");
         return teaWebService.getOrderList(user.getUserId());
     }
 
     @RequestMapping("/getIntegralList")
     public List<TeaIntegral> getIntegralList(HttpServletRequest request) {
         HttpSession session = request.getSession();
-        User user = (User) session.getAttribute("user");
+        SysUser user = (SysUser) session.getAttribute("user");
         return teaWebService.getIntegralList(user.getUserId());
+    }
+
+    @RequestMapping("/getIntegralSum")
+    public BigDecimal getIntegralSum(Integer userId) {
+        return teaWebService.getIntegralSum(userId);
     }
 }

@@ -60,7 +60,7 @@
     <ul>
         <li><a href="index_web.html">首页</a></li>
         <li><a href="goods_list.html">商品列表</a></li>
-        <li><a href="#">个人中心</a></li>
+        <li><a href="center.html">个人中心</a></li>
 
 
         <li class="">
@@ -91,12 +91,14 @@
 
 <script>
     GoodsQuery();
+
     //查询所有商品
     function GoodsQuery() {
         $.ajax({
-            url: '/TeaShop/web/getGoodsByAddtime?goodsName=' + $("#searchName").val(),
-            type: 'get',
-            //dataType:'json',
+            url: '/TeaShop/web/getGoodsByAddtime',
+            type: 'post',
+            dataType: 'json',
+            data: {goodsName: $("#searchName").val()},
             success: function (data) {
                 var html = '<ul>';
                 for (var i = 0; i < data.length; i++) {
@@ -107,7 +109,7 @@
                         "<p class='goods_desc'>" + goods.brief + "</p>" +
                         "<p class='goods_price pull-left'>¥" + goods.price + "</p>" +
                         "<p class='goods_add'>" +
-                        "<button class='btn btn-success btn-sm pull-right' onclick=\"location.href='/TeaShop/pc/order_confirm.html?goodsId=" + goods.id + "'\">立即购买</button>" +
+                        "<button class='btn btn-success btn-sm pull-right' onclick=\"location.href='/TeaShop/pc/web/order_confirm.html?goodsId=" + goods.id + "'\">立即购买</button>" +
                         "</p>" +
                         "</li>";
                 }

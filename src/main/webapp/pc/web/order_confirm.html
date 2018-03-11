@@ -64,7 +64,7 @@
     <ul>
         <li><a href="index_web.html">首页</a></li>
         <li><a href="goods_list.html">商品列表</a></li>
-        <li><a href="#">个人中心</a></li>
+        <li><a href="center.html">个人中心</a></li>
 
         <li class="">
             <a href="/TeaShop/loginOut" class="">
@@ -127,7 +127,7 @@
             data: {goodsId: goodsId},
             success: function (data) {
                 goodsInfo = data;
-                $(".goods_pic").src("../../upload/" + data.picpath);
+                $(".goods_pic").attr("src", "../../upload/" + data.picpath);
                 $(".goods_name").html(data.goodsname);
                 $(".goods_desc").html(data.brief);
                 $(".goods_price").html("￥" + data.price);
@@ -158,18 +158,24 @@
         var phone = $("#phone").val();
         var address = $("#address").val();
         var number = $("#number").val();
+
         $.ajax({
             url: "/TeaShop/web/saveOrder",
-            type: "get",
+            type: "post",
             dataType: "json",
-            data: $.extend({
-                mobile: phone,
+            data: {
+                id: goodsInfo.id,
+                goodsname: goodsInfo.goodsname,
+                price: goodsInfo.price,
+                picpath: goodsInfo.picpath,
                 address: address,
+                mobile: phone,
                 number: number,
                 username: username
-            }, goodsInfo),
+            },
             success: function (data) {
                 alert("下单成功！");
+                location.href = "center.html";
             }
         });
     });

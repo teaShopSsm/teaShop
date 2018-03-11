@@ -6,7 +6,7 @@ public class TeaGoodsDTO extends TeaGoods {
     private String mobile;
     private String address;
     private Integer number;
-    private String userName;
+    private String username;
     private String goodspic;
 
     public String getGoodspic() {
@@ -41,11 +41,11 @@ public class TeaGoodsDTO extends TeaGoods {
         this.number = number;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUsername(String username) {
+        this.username = username;
     }
 }

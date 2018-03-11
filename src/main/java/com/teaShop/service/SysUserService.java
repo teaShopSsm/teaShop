@@ -8,7 +8,6 @@ import com.teaShop.bean.SysUser;
 public interface SysUserService {
 	/**
 	 * 
-	 * @param phone
 	 * @return
 	 */
 	public abstract SysUser getUser(String name);
@@ -31,7 +30,6 @@ public interface SysUserService {
 	/**
 	 * 删除用户
 	 * 
-	 * @param id
 	 * @return
 	 */
 	public int deleteUser(int userId);
@@ -71,7 +69,6 @@ public interface SysUserService {
 	/**
 	 * 根据电话或邮箱获取用户
 	 * 
-	 * @param accounts
 	 * @return
 	 */
 	public List<SysUser> getUserByUserName(String name);
@@ -120,4 +117,15 @@ public interface SysUserService {
 
 	public List<String> getMailList();
 	public int getUserCount(String username);
+
+	/**
+	 * 获取全部会员信息
+	 *
+	 * @return
+	 */
+	//public JSONObject getAllMember(SysUser user);
+	public List<SysUser> getAllMember(SysUser user);
+
+
+	public Integer forbidMember(Integer userid);
 }

@@ -7,7 +7,10 @@
     <link rel="stylesheet" type="text/css" href="../../css/web/style.css">
     <style>
         /*自定义*/
-
+        thead tr {
+            font-weight: bold;
+        }
+        .form-group div{line-height: 30px;}
     </style>
 </head>
 <body>
@@ -18,7 +21,7 @@
     <ul>
         <li><a href="index_web.html">首页</a></li>
         <li><a href="goods_list.html">商品列表</a></li>
-        <li><a href="#">个人中心</a></li>
+        <li><a href="center.html">个人中心</a></li>
 
         <li class="">
             <a href="/TeaShop/loginOut" class="">
@@ -28,7 +31,7 @@
     </ul>
 </div>
 
-<div class="container">
+<div class="container" style="margin-top: 20px">
     <!-- Nav tabs -->
     <ul class="nav nav-tabs" role="tablist">
         <li role="presentation" class="active">
@@ -39,7 +42,7 @@
     </ul>
 
     <!-- Tab panes -->
-    <div class="tab-content">
+    <div class="tab-content" style="margin-top: 7px">
         <div role="tabpanel" class="tab-pane active" id="home">
             <form class="form-horizontal">
                 <div class="form-group">
@@ -62,22 +65,27 @@
                     <label class="col-sm-2 control-label">注册日期：</label>
                     <div class="col-sm-10" id="CREATE_DATE"></div>
                 </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">总积分：</label>
+                    <div class="col-sm-10" id="jifen"></div>
+                </div>
             </form>
         </div>
         <div role="tabpanel" class="tab-pane" id="profile">
-            <table class="table table-hover">
+            <table class="table table-bordered table-striped">
                 <thead>
-                <th>订单id</th>
-                <th>编号</th>
-                <th>总金额</th>
-                <th>商品数</th>
-                <th>收货人姓名</th>
-                <th>收货人手机</th>
-                <th>收货地址</th>
-                <th>创建时间</th>
-                <th>商品名称</th>
-                <th>商品数量</th>
-                <th>商品单价</th>
+                <tr>
+                    <th>编号</th>
+                    <th>总金额</th>
+                    <th>商品数</th>
+                    <th>收货人姓名</th>
+                    <th>收货人手机</th>
+                    <th>收货地址</th>
+                    <th>创建时间</th>
+                    <th>商品名称</th>
+                    <th>商品数量</th>
+                    <th>商品单价</th>
+                </tr>
                 </thead>
                 <tbody id="orderList">
 
@@ -85,10 +93,13 @@
             </table>
         </div>
         <div role="tabpanel" class="tab-pane" id="messages">
-            <table class="table table-hover">
+            <table class="table table-bordered table-striped">
                 <thead>
-                <th>积分数</th>
-                <th>操作</th>
+                <tr>
+                    <th>订单编号</th>
+                    <th>积分数</th>
+                    <th>操作</th>
+                </tr>
                 </thead>
                 <tbody id="jfList">
 
@@ -117,7 +128,7 @@
                 $("#CREATE_DATE").html(data.createDate);
             },
             error: function (data) {
-                swal('错误', '加载失败！', 'error');
+                console.log('错误', '加载失败！', 'error');
             }
         });
 
@@ -130,7 +141,6 @@
                 for (var i = 0; i < data.length; i++) {
                     var order = data[i];
                     html += "<tr>"
-                        + "<td>" + order.id + "</td>"
                         + "<td>" + order.code + "</td>"
                         + "<td>" + order.totalprice + "</td>"
                         + "<td>" + order.quantity + "</td>"
@@ -147,7 +157,7 @@
 
             },
             error: function (data) {
-                swal('错误', '加载失败！', 'error');
+                console.log('错误', '加载失败！', 'error');
             }
         });
 
@@ -160,17 +170,31 @@
                 for (var i = 0; i < data.length; i++) {
                     var jf = data[i];
                     html += "<tr>"
-                    + "<td>" + jf.quantity + "</td>"
-                    + "<td>" + jf.operator == 1 ? "+" : "-" + "</td>"
+                         +"<td>" + jf.orderno + "</td>"
+                        + "<td>" + jf.quantity + "</td>"
+                        + "<td>" + (jf.operator == 1 ? "+" : "-") + "</td>"
                         + "</tr>";
                 }
                 $("#jfList").html(html)
 
             },
             error: function (data) {
-                swal('错误', '加载失败！', 'error');
+                console.log('错误', '加载失败！', 'error');
             }
         });
+
+        $.ajax({
+            url: '/TeaShop/web/getIntegralSum',
+            type: 'get',
+            dataType: 'json',
+            success: function (data) {
+                $("#jifen").html(data)
+            },
+            error: function (data) {
+                console.log('错误', '加载失败！', 'error');
+            }
+        });
+
     });
 
 

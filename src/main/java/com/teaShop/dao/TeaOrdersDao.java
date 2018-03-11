@@ -6,6 +6,7 @@ import com.teaShop.bean.TeaOrders;
 import com.teaShop.bean.dto.TeaOrderVO;
 import org.springframework.stereotype.Repository;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @Repository
@@ -20,5 +21,6 @@ public interface TeaOrdersDao {
 
     List<TeaIntegral> getIntegralList(Integer userId);
 
+    BigDecimal getIntegralSum(Integer userId);
 
 }

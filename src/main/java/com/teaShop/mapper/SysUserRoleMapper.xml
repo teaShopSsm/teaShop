@@ -41,5 +41,6 @@
 		sys_user_role userRole
 		WHERE
 		userRole.user_id = #{userId}
+
 	</select>
 </mapper>

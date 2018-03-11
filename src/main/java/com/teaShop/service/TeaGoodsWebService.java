@@ -6,6 +6,7 @@ import com.teaShop.bean.dto.TeaGoodsDTO;
 import com.teaShop.bean.dto.TeaOrderVO;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 public interface TeaGoodsWebService {
@@ -19,4 +20,6 @@ public interface TeaGoodsWebService {
     List<TeaOrderVO> getOrderList(Integer userId);
 
     List<TeaIntegral> getIntegralList(Integer userId);
+
+    BigDecimal getIntegralSum(Integer userId);
 }

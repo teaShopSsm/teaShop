@@ -139,4 +139,13 @@ public interface SysUserDao {
 
 	// 添加用户时，选择用户类型，并向用户-角色表中插入记录
 	public int addUserRole(SysUser user);
+
+	/**
+	 * 获取全部用户信息
+	 *
+	 * @return
+	 */
+	public List<SysUser> getAllMember(SysUser user);
+
+	public int forbidMember(Integer userId);
 }
