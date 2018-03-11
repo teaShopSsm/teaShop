@@ -58,9 +58,8 @@
 </div>
 <div class="nav">
     <ul>
-        <li><a href="#">首页</a></li>
-        <li><a href="#">商品列表</a></li>
-        <li><a href="#">购物车</a></li>
+        <li><a href="index_web.html">首页</a></li>
+        <li><a href="goods_list.html">商品列表</a></li>
         <li><a href="#">个人中心</a></li>
 
 
@@ -77,73 +76,52 @@
     <div style="display: block;height: 40px;">
         <div class="input-group pull-right" style="width: 360px;">
             <input type="text" class="form-control" id="searchName" placeholder="请输入商品名搜索">
-            <span class="input-group-btn"><button class="btn btn-success" type="button">搜 索</button></span>
+            <span class="input-group-btn"><button class="btn btn-success" type="button"
+                                                  onclick="GoodsQuery()">搜 索</button></span>
         </div>
     </div>
-    <div class="goods_list">
-        <ul>
-            <li>
-                <img src="../../img/snowlink.ico">
-                <p class="goods_name">JONSBO乔思伯UMX4 ATX大板 中塔式</p>
-                <p class="goods_desc">全兼容240水冷 支持ATX大主板 30cm内长显卡</p>
-                <p class="goods_price pull-left">¥668</p>
-                <p class="goods_add">
-                    <button class="btn btn-success btn-sm pull-right">立即购买</button>
-                </p>
-            </li>
-            <li>
-                <img src="../../img/snowlink.ico">
-                <p class="goods_name">JONSBO乔思伯UMX4 ATX大板 中塔式</p>
-                <p class="goods_desc">全兼容240水冷 支持ATX大主板 30cm内长显卡</p>
-                <p class="goods_price pull-left">¥668</p>
-                <p class="goods_add">
-                    <button class="btn btn-success btn-sm pull-right">立即购买</button>
-                </p>
-            </li>
-            <li>
-                <img src="../../img/snowlink.ico">
-                <p class="goods_name">JONSBO乔思伯UMX4 ATX大板 中塔式</p>
-                <p class="goods_desc">全兼容240水冷 支持ATX大主板 30cm内长显卡</p>
-                <p class="goods_price pull-left">¥668</p>
-                <p class="goods_add">
-                    <button class="btn btn-success btn-sm pull-right">立即购买</button>
-                </p>
-            </li>
-            <li>
-                <img src="../../img/snowlink.ico">
-                <p class="goods_name">JONSBO乔思伯UMX4 ATX大板 中塔式</p>
-                <p class="goods_desc">全兼容240水冷 支持ATX大主板 30cm内长显卡</p>
-                <p class="goods_price pull-left">¥668</p>
-                <p class="goods_add">
-                    <button class="btn btn-success btn-sm pull-right">立即购买</button>
-                </p>
-            </li>
-            <li>
-                <img src="../../img/snowlink.ico">
-                <p class="goods_name">JONSBO乔思伯UMX4 ATX大板 中塔式</p>
-                <p class="goods_desc">全兼容240水冷 支持ATX大主板 30cm内长显卡</p>
-                <p class="goods_price pull-left">¥668</p>
-                <p class="goods_add">
-                    <button class="btn btn-success btn-sm pull-right">立即购买</button>
-                </p>
-            </li>
-
-            <li>
-                <img src="../../img/snowlink.ico">
-                <p class="goods_name">JONSBO乔思伯UMX4 ATX大板 中塔式</p>
-                <p class="goods_desc">全兼容240水冷 支持ATX大主板 30cm内长显卡</p>
-                <p class="goods_price pull-left">¥668</p>
-                <p class="goods_add">
-                    <button class="btn btn-success btn-sm pull-right">立即购买</button>
-                </p>
-            </li>
-        </ul>
+    <div class="goods_list" id="goodsList">
     </div>
 
 </div>
 
 <script src="../../js/jquery.min.js"></script>
 <script src="../../plugins/bootstrap/js/bootstrap.min.js"></script>
+
+
+<script>
+    GoodsQuery();
+    //查询所有商品
+    function GoodsQuery() {
+        $.ajax({
+            url: '/TeaShop/web/getGoodsByAddtime?goodsName=' + $("#searchName").val(),
+            type: 'get',
+            //dataType:'json',
+            success: function (data) {
+                var html = '<ul>';
+                for (var i = 0; i < data.length; i++) {
+                    var goods = data[i];
+                    html += "<li>" +
+                        "<img src='../../upload/" + goods.picpath + "'>" +
+                        "<p class='goods_name'>" + goods.goodsname + "</p>" +
+                        "<p class='goods_desc'>" + goods.brief + "</p>" +
+                        "<p class='goods_price pull-left'>¥" + goods.price + "</p>" +
+                        "<p class='goods_add'>" +
+                        "<button class='btn btn-success btn-sm pull-right' onclick=\"location.href='/TeaShop/pc/order_confirm.html?goodsId=" + goods.id + "'\">立即购买</button>" +
+                        "</p>" +
+                        "</li>";
+                }
+                html += "</ul>"
+                $("#goodsList").html(html)
+
+            },
+            error: function (data) {
+                swal('错误', '加载失败！', 'error');
+            }
+        });
+    }
+
+</script>
 
 </body>
 </html>

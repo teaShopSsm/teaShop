@@ -14,11 +14,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.Date;
 
 public class TeaGoods implements Serializable {
 
-    private String id;
+    private Integer id;
 
     private String goodsname;
 
@@ -37,29 +38,29 @@ public class TeaGoods implements Serializable {
 
     private Date addtime;
 
-    private Double price;
+    private BigDecimal price;
 
     private static final long serialVersionUID = 1L;
 
-    public Double getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 
-    public void setPrice(Double price) {
+    public void setPrice(BigDecimal price) {
         this.price = price;
     }
 
     /**
      * @return id
      */
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 
     /**
      * @param id
      */
-    public void setId(String id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

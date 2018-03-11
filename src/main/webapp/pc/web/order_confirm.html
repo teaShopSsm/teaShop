@@ -62,9 +62,8 @@
 </div>
 <div class="nav">
     <ul>
-        <li><a href="#">首页</a></li>
-        <li><a href="#">商品列表</a></li>
-        <li><a href="#">购物车</a></li>
+        <li><a href="index_web.html">首页</a></li>
+        <li><a href="goods_list.html">商品列表</a></li>
         <li><a href="#">个人中心</a></li>
 
         <li class="">
@@ -116,19 +115,22 @@
 
 <script>
     //商品id
-    var goodsId = getQueryString(goodsId);
+    var goodsId = getQueryString("goodsId");
+    var goodsInfo = null;
     //初始化
     var init = function () {
         //查询商品详情
         $.ajax({
-            url: "xxx",
+            url: "/TeaShop/web/getGoodsDetail/" + goodsId,
             type: "get",
             dataType: "json",
             data: {goodsId: goodsId},
             success: function (data) {
-                $(".goods_name").html("xxx");
-                $(".goods_desc").html("xxx");
-                $(".goods_price").html("xxx");
+                goodsInfo = data;
+                $(".goods_pic").src("../../upload/" + data.picpath);
+                $(".goods_name").html(data.goodsname);
+                $(".goods_desc").html(data.brief);
+                $(".goods_price").html("￥" + data.price);
             }
         });
     }();
@@ -157,20 +159,17 @@
         var address = $("#address").val();
         var number = $("#number").val();
         $.ajax({
-            url: "xxx",
+            url: "/TeaShop/web/saveOrder",
             type: "get",
             dataType: "json",
-            data: {
-                goodsId: goodsId,
-                username: username,
-                phone: phone,
+            data: $.extend({
+                mobile: phone,
                 address: address,
-                number: number
-            },
+                number: number,
+                username: username
+            }, goodsInfo),
             success: function (data) {
-                $(".goods_name").html("xxx");
-                $(".goods_desc").html("xxx");
-                $(".goods_price").html("xxx");
+                alert("下单成功！");
             }
         });
     });
