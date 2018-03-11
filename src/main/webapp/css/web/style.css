@@ -3129,13 +3129,13 @@ table {
     margin: 6px auto;
 }
 
-.nav {
+.navtop {
     width: 1080px;
     margin: 20px auto 3px;
     height: 26px;
 }
 
-.nav ul li {
+.navtop ul li {
     font-size: 16px;
     font-weight: 600;
     float: left;

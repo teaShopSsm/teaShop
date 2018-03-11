@@ -70,13 +70,13 @@ public class TeaGoodsWebServiceImpl implements TeaGoodsWebService {
         teaOrderGoods.setGoodsPrice(teaGoodsDTO.getPrice());
         teaOrderGoods.setGoodsQuantity(teaGoodsDTO.getNumber());
         teaOrderGoods.setGoodspic(teaGoodsDTO.getGoodspic());
-        teaOrderGoods.setOrderid(orderId);
+        teaOrderGoods.setOrderid(teaOrders.getId());
         teaOrdersDao.addOrderItem(teaOrderGoods);
         //新增积分
         TeaIntegral teaIntegral = new TeaIntegral();
         teaIntegral.setId(UUID.randomUUID().toString().replaceAll("-", ""));
         teaIntegral.setOperator(1);//1加
-        teaIntegral.setOrderid(orderId);
+        teaIntegral.setOrderid(teaOrders.getId());
         teaIntegral.setOrderprice(totalPrice);
         teaIntegral.setQuantity(totalPrice.divide(new BigDecimal(10)));
         teaIntegral.setUserid(String.valueOf(userId));
