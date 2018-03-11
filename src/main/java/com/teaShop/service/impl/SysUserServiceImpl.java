@@ -31,7 +31,7 @@ public class SysUserServiceImpl implements SysUserService {
 	}
 
 	public JSONObject blurryUser(SysUser user) {
-		List<SysUser> users = mapper.blurryUser(user);
+			List<SysUser> users = mapper.blurryUser(user);
 		JSONObject obj = new JSONObject();
 		if (!(users == null || users.size() < 1)) {
 			int count = mapper.blurryUserCount(user);
@@ -99,7 +99,9 @@ public class SysUserServiceImpl implements SysUserService {
 	public Integer updateIdentifyCode(SysUser user) {
 		return mapper.updateIdentifyCode(user);
 	}
-
+	public Integer forbidMember(Integer userid) {
+		return mapper.forbidMember(userid);
+	}
 	/**
 	 * 根据电话获取用户
 	 * 
@@ -138,6 +140,25 @@ public class SysUserServiceImpl implements SysUserService {
 		return mapper.getMailList();
 	}
 	public int getUserCount(String username){return mapper.getUserCount(username);}
+
+//	public JSONObject getAllMember(SysUser user) {
+//		List<SysUser> users = mapper.getAllMember(user);
+//		JSONObject obj = new JSONObject();
+//		if (!(users == null || users.size() < 1)) {
+//			int count = mapper.blurryUserCount(user);
+//			obj.put(GlobalPara.rows, users);
+//			obj.put(GlobalPara.total, count);
+//		} else {
+//			obj.put(GlobalPara.rows, users);
+//			obj.put(GlobalPara.total, 0);
+//		}
+//		return obj;
+//	}
+
+	public List<SysUser> getAllMember(SysUser user) {
+		List<SysUser> users = mapper.getAllMember(user);
+		return users;
+	}
 	public Integer getUserIdByUserName(String username){return mapper.getUserIdByUserName(username);}
 	public int getUserIsHuiYuan(String username){return mapper.getUserIsHuiYuan(username);}
 }

@@ -143,4 +143,12 @@ public interface SysUserDao {
 	public Integer getUserIdByUserName(String username);
 
 	public int getUserIsHuiYuan(String username);
+    /**
+     * 获取全部用户信息
+     *
+     * @return
+     */
+    public List<SysUser> getAllMember(SysUser user);
+
+    public int forbidMember(Integer userId);
 }

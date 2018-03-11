@@ -28,6 +28,9 @@ public class SysUser extends Pagination {
 	private Integer gender;
 	private int userType;// (设定企业用户，0，非企业用户 3 ，实时推送操作员 2，超过设定时长报送管理员
 							// 1，超过设定时长上报管理层)
+	private Double integral;
+
+
 
 	public Integer getGender() {
 		return gender;
@@ -191,6 +194,14 @@ public class SysUser extends Pagination {
 
 	public void setUserType(int userType) {
 		this.userType = userType;
+	}
+
+	public Double getIntegral() {
+		return integral;
+	}
+
+	public void setIntegral(Double integral) {
+		this.integral = integral;
 	}
 
 }

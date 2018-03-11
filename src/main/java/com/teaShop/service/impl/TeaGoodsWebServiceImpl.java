@@ -50,18 +50,22 @@ public class TeaGoodsWebServiceImpl implements TeaGoodsWebService {
     public void saveOrder(TeaGoodsDTO teaGoodsDTO, Integer userId, String userName) {
         //保存订单
         TeaOrders teaOrders = new TeaOrders();
-        //String orderId = UUID.randomUUID().toString().replaceAll("-", "");
-        //teaOrders.setId(orderId);
+        String orderId = UUID.randomUUID().toString().replaceAll("-", "");
+        teaOrders.setId(orderId);
         teaOrders.setAddress(teaGoodsDTO.getAddress());
         teaOrders.setAddtime(new Date());
         teaOrders.setCode("" + System.currentTimeMillis());
         teaOrders.setStatus(1);
+        teaOrders.setQuantity(teaGoodsDTO.getNumber());
         teaOrders.setTelephone(teaGoodsDTO.getMobile());
         BigDecimal totalPrice = teaGoodsDTO.getPrice().multiply(new BigDecimal(teaGoodsDTO.getNumber()));
         teaOrders.setTotalprice(totalPrice);
         teaOrders.setUserid(userId);
         teaOrders.setUsername(teaGoodsDTO.getUserName());
         int orderId = teaOrdersDao.addOrder(teaOrders);
+        teaOrders.setUserid(String.valueOf(userId));
+        teaOrders.setUsername(teaGoodsDTO.getUsername());
+        teaOrdersDao.addOrder(teaOrders);
         //保存订单项
         TeaOrderGoods teaOrderGoods = new TeaOrderGoods();
         teaOrderGoods.setId(UUID.randomUUID().toString().replaceAll("-", ""));
@@ -74,6 +78,8 @@ public class TeaGoodsWebServiceImpl implements TeaGoodsWebService {
         teaOrdersDao.addOrderItem(teaOrderGoods);
         //新增积分
         TeaIntegral teaIntegral = new TeaIntegral();
+        teaIntegral.setOperator("1");//1加
+        teaIntegral.setOrderid(teaOrders.getId());
         teaIntegral.setId(UUID.randomUUID().toString().replaceAll("-", ""));
         teaIntegral.setOperator("1");//1加
         teaIntegral.setOrderid(orderId);
@@ -81,6 +87,7 @@ public class TeaGoodsWebServiceImpl implements TeaGoodsWebService {
         teaIntegral.setQuantity(totalPrice.divide(new BigDecimal(10)));
         teaIntegral.setUserid(userId);
         teaIntegral.setUsername(userName);
+        teaIntegral.setOrderno(teaOrders.getCode());
         teaOrdersDao.addIntegral(teaIntegral);
     }
 
@@ -91,5 +98,9 @@ public class TeaGoodsWebServiceImpl implements TeaGoodsWebService {
 
     public List<TeaIntegral> getIntegralList(Integer userId) {
         return teaOrdersDao.getIntegralList(userId);
+    }
+
+    public BigDecimal getIntegralSum(Integer userId) {
+        return teaOrdersDao.getIntegralSum(userId);
     }
 }

@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.github.pagehelper.PageInfo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -889,6 +890,55 @@ public class SysUserController {
 			}
 			response.getWriter().print(JSONArray.toJSON(message));
 		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	/**
+	 * 获取所有的会员信息
+	 */
+	@RequestMapping(value = "/getAllMember", produces = "text/html;charset=UTF-8")
+	public void getAllMember(HttpServletRequest request, HttpServletResponse response) {
+		try {
+			SysUser loginUser = (SysUser) request.getSession().getAttribute("user");
+			String userName = request.getParameter("userName");
+			//String userDesc = request.getParameter("userDesc");
+			int pageNumber = Integer.parseInt(request.getParameter("pageNumber"));
+			int pageSize = Integer.parseInt(request.getParameter("pageSize"));
+			SysUser user = new SysUser();
+			user.setUserName(userName);
+			//user.setDescription(userDesc);
+			user.setUserId(loginUser.getUserId());
+			user.setIsSystem(loginUser.getIsSystem());
+			user.setPageNumber((pageNumber - 1) * pageSize);
+			user.setPageSize(pageSize);
+			List<SysUser> userList = service.getAllMember(user);
+			PageInfo info = new PageInfo(userList);
+			response.getWriter().print(JSONArray.toJSON(info));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	/**
+	 * 禁用用户
+	 */
+	@RequestMapping("/forbidMember")
+	public void forbidMember(HttpServletRequest request, HttpServletResponse response) {
+		try {
+			message = new Message();
+			int userId = Integer.parseInt(request.getParameter("id"));
+			int flag = service.forbidMember(userId);
+			if (flag < 1) {
+				message.setFlag(-1);
+				message.setMessage("禁用失败");
+			} else {
+				message.setFlag(0);
+			}
+			response.getWriter().print(JSONObject.toJSON(message));
+		} catch (NumberFormatException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}

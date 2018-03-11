@@ -20,7 +20,7 @@ import java.math.BigDecimal;
 public class TeaIntegral implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String id;
+    private Integer id;
 
     /**
      * 积分数
@@ -40,19 +40,29 @@ public class TeaIntegral implements Serializable {
 
     private BigDecimal orderprice;
 
+    public String getOrderno() {
+        return orderno;
+    }
+
+    public void setOrderno(String orderno) {
+        this.orderno = orderno;
+    }
+
+    private String orderno;
+
     private static final long serialVersionUID = 1L;
 
     /**
      * @return id
      */
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 
     /**
      * @param id
      */
-    public void setId(String id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

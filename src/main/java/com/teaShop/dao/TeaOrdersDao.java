@@ -10,6 +10,9 @@ import com.teaShop.bean.dto.TeaOrderVO;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
+import java.math.BigDecimal;
+import java.util.List;
+
 @Repository
 public interface TeaOrdersDao {
     int addOrder(TeaOrders teaOrders);
@@ -29,5 +32,6 @@ public interface TeaOrdersDao {
     public TeaOrders getOneById(int id);
 
     public int editOrder(TeaOrders teaOrders);
+    BigDecimal getIntegralSum(Integer userId);
 
 }
