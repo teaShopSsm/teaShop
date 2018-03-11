@@ -81,7 +81,9 @@ public class WebController {
     }
 
     @RequestMapping("/getIntegralSum")
-    public BigDecimal getIntegralSum(Integer userId) {
-        return teaWebService.getIntegralSum(userId);
+    public BigDecimal getIntegralSum(HttpServletRequest request) {
+        HttpSession session = request.getSession();
+        SysUser user = (SysUser) session.getAttribute("user");
+        return teaWebService.getIntegralSum(user.getUserId());
     }
 }

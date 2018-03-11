@@ -24,7 +24,13 @@
         order by T1.addtime desc
     </select>
 
-    <select id="getIntegralList" parameterType="Integer" resultType="java.math.BigDecimal">
+    <select id="getIntegralList" parameterType="java.lang.Integer" resultType="com.teaShop.bean.TeaIntegral">
+        select T1.*
+        from tea_integral T1
+        where T1.userid = #{userId}
+    </select>
+
+    <select id="getIntegralSum" parameterType="java.lang.Integer" resultType="java.math.BigDecimal">
         select sum(T1.quantity)
         from tea_integral T1
         where T1.userid = #{userId}
