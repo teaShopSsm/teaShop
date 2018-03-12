@@ -26,6 +26,7 @@
         <div class="col-md-3">
 				<span class="input-group"> <span class="input-group-addon" style="color: black; padding: 3px;">订单状态</span>
                     <select id="statusQuery" name="status"  class="form-control">
+                                    <option value="">全部</option>
                                     <option value="1">可用</option>
                                     <option value="0">不可用</option>
                                 </select>
@@ -55,7 +56,12 @@
             <div class="modal-body" style="height:500px;">
                 <div style="margin-left: 25px;margin-right:25px">
                     <form  class="form-horizontal" role="form" id="addForm">
-
+                        <div class="form-group">
+                            <div class="input-group">
+                                <span class="input-group-addon" style="color: black;">订单编号</span>
+                                <input id="id" name="id" type="text" class="form-control" readonly="readonly"/>
+                            </div>
+                        </div>
                         <div class="form-group">
                             <div class="input-group">
                                 <span class="input-group-addon" style="color: black;">会员</span>
@@ -76,7 +82,6 @@
                                        class="form-control" placeholder="请输入订单金额">
                             </div>
                         </div>
-                        <input type="hidden" name="id" id="id"/>
                         <div class="form-group">
                             <div  class="input-group">
                                 <span class="input-group-addon" style="color: black;">积分数</span>

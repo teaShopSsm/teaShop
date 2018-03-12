@@ -3,15 +3,17 @@ $(document).ready(function() {
 });
 
 var teaOrdersColumns =
-    [ {
+    [
+       /* {
         field : 'id',
         title : '订单编号',
         width : '10%',
         align : 'center',
-        /*formatter : function(value, row, index) {
+        /!*formatter : function(value, row, index) {
             return index + 1;
-        }*/
-    }, {
+        }*!/
+    },*/
+        {
         field : 'username',
         title : '会员',
         align : 'center'
@@ -26,6 +28,10 @@ var teaOrdersColumns =
     }, {
         field : 'telephone',
         title : '联系电话',
+        align : 'center'
+    },{
+        field : 'address',
+        title : '联系地址',
         align : 'center'
     },{
         field : 'id',
@@ -135,7 +141,7 @@ function updateTeaOrdersInfo(id){
 function insertTeaOrders(){
     var reg = /^\d+(?:\.\d{1,2})?$/;
     if($("#totalprice").val() != '') {
-        if (!reg.test($("#orderprice").val())) {
+        if (!reg.test($("#totalprice").val())) {
             errorSwal("请输入整数或者两位小数的订单金额！");
             return;
         }

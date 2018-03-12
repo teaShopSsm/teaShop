@@ -154,7 +154,6 @@ function insertTeaIntegral(){
             data:{'username':$("#username").val()},
             type:'get',
             success:function (data) {
-                alert("flag:" + data);
                 if(data != 0){
                     b = false;
                 }else{
@@ -162,7 +161,6 @@ function insertTeaIntegral(){
                 }
             }
         });
-        alert(b);
         if(!b){
             errorSwal("该会员不存在");
             return;
@@ -180,7 +178,6 @@ function insertTeaIntegral(){
             type:'get',
             async:false,
             success:function (data) {
-                alert(data+"flag");
                 if(data != 0){
                     b = false;
                 }else{
@@ -188,7 +185,6 @@ function insertTeaIntegral(){
                 }
             }
         });
-        alert(b);
         if(!b){
             errorSwal("该订单不存在");
             return;

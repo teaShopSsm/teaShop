@@ -17,7 +17,38 @@
         <result column="addtime" property="addtime" jdbcType="TIMESTAMP" />
     </resultMap>
 
+    <select id="getAll" parameterType="com.teaShop.bean.TeaOrders" resultType="com.teaShop.bean.TeaOrders">
+        select *
+        from tea_orders
+        where username like '%${username}%'
+        <if test="status != null and status!='' and status !=2">
+            and status = #{status}
+        </if>
+    </select>
 
+    <select id="orderIsHave" parameterType="String" resultType="Integer">
+        SELECT count(1)
+        from tea_orders
+        where id = #{orderid}
+    </select>
+    <select id="getOneById" parameterType="String" resultType="com.teaShop.bean.TeaOrders">
+        select *
+        from tea_orders where id=#{id}
+    </select>
+
+    <update id="editOrder" parameterType="com.teaShop.bean.TeaOrders">
+        update tea_orders
+        set code=#{code},
+            totalprice=#{totalprice},
+            quantity=#{quantity},
+            username=#{username},
+            userid=#{userid},
+            telephone=#{telephone},
+            address=#{address},
+            status=#{status},
+            addtime=#{addtime}
+        where id=#{id}
+    </update>
 
     <insert id="addOrder" parameterType="com.teaShop.bean.TeaOrders">
       insert into tea_orders
@@ -30,8 +61,8 @@
     </insert>
 
     <insert id="addIntegral" parameterType="com.teaShop.bean.TeaIntegral">
-        insert into tea_integral(id,quantity,orderid,userid,username,operator,orderprice,orderno)
-        values(#{id},#{quantity},#{orderid},#{userid},#{username},#{operator},#{orderprice},#{orderno})
+        insert into tea_integral(quantity,orderid,userid,username,operator,orderprice,orderno)
+        values(#{quantity},#{orderid},#{userid},#{username},#{operator},#{orderprice},#{orderno})
     </insert>
 
     <select id="getOrderList" parameterType="Integer" resultType="com.teaShop.bean.dto.TeaOrderVO">

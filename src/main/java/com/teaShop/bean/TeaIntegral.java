@@ -27,7 +27,7 @@ public class TeaIntegral implements Serializable {
      */
     private BigDecimal quantity;
 
-    private int orderid;
+    private String orderid;
 
     private int userid;
 
@@ -87,14 +87,14 @@ public class TeaIntegral implements Serializable {
     /**
      * @return orderid
      */
-    public int getOrderid() {
+    public String getOrderid() {
         return orderid;
     }
 
     /**
      * @param orderid
      */
-    public void setOrderid(int orderid) {
+    public void setOrderid(String orderid) {
         this.orderid = orderid;
     }
 

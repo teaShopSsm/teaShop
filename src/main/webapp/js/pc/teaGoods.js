@@ -94,7 +94,7 @@ function addTeaGoods(){
         uploadUrl : "../teaGoods/upload",
         autoReplace : true,
         showPreview : false,//是否显示预览
-        showRemove : false, //显示移除按钮
+        showRemove : true, //显示移除按钮
         maxFileCount : 1,
         allowedFileExtensions : [ "jpg", "png", "gif" ,"jpeg"],
         browseClass : "btn btn-primary", //按钮样式
@@ -117,7 +117,7 @@ function closeTeaGoods(){
     $("#price").val("");
     $("#id").val("");
     $("#picture").attr("src","");
-    $("#pic").empty();
+    $("#pic").fileinput('clear');
 }
 
 function updateTeaGoodsInfo(id){
@@ -148,7 +148,7 @@ function updateTeaGoodsInfo(id){
         uploadUrl : "../teaGoods/upload",
         autoReplace : true,
         showPreview : false,//是否显示预览
-        showRemove : false, //显示移除按钮
+        showRemove : true, //显示移除按钮
         maxFileCount : 1,
         allowedFileExtensions : [ "jpg", "png", "gif" ,"jpeg"],
         browseClass : "btn btn-primary", //按钮样式

@@ -11,8 +11,8 @@ public interface OrdersService {
      * @return
      */
     public List<TeaOrders> getAll(TeaOrders teaOrders);
-    public TeaOrders getOneById(int id);
+    public TeaOrders getOneById(String id);
     public int editOrder(TeaOrders teaOrders);
 
-    public int orderIsHave(int orderid);
+    public int orderIsHave(String orderid);
 }

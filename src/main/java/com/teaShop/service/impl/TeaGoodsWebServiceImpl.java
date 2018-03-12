@@ -60,9 +60,8 @@ public class TeaGoodsWebServiceImpl implements TeaGoodsWebService {
         teaOrders.setTelephone(teaGoodsDTO.getMobile());
         BigDecimal totalPrice = teaGoodsDTO.getPrice().multiply(new BigDecimal(teaGoodsDTO.getNumber()));
         teaOrders.setTotalprice(totalPrice);
-        teaOrders.setUserid(userId);
-        teaOrders.setUsername(teaGoodsDTO.getUserName());
-        int orderId = teaOrdersDao.addOrder(teaOrders);
+        teaOrders.setUserid(String.valueOf(userId));
+        teaOrders.setUsername(teaGoodsDTO.getUsername());
         teaOrders.setUserid(String.valueOf(userId));
         teaOrders.setUsername(teaGoodsDTO.getUsername());
         teaOrdersDao.addOrder(teaOrders);
@@ -80,7 +79,7 @@ public class TeaGoodsWebServiceImpl implements TeaGoodsWebService {
         TeaIntegral teaIntegral = new TeaIntegral();
         teaIntegral.setOperator("1");//1加
         teaIntegral.setOrderid(teaOrders.getId());
-        teaIntegral.setId(UUID.randomUUID().toString().replaceAll("-", ""));
+        //teaIntegral.setId(UUID.randomUUID().toString().replaceAll("-", ""));
         teaIntegral.setOperator("1");//1加
         teaIntegral.setOrderid(orderId);
         teaIntegral.setOrderprice(totalPrice);

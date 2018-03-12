@@ -114,7 +114,7 @@ public class TeaIntegralController {
     }
 
     @RequestMapping("/orderIsHave")
-    public void orderIsHave(HttpServletRequest request, HttpServletResponse response,@RequestParam("orderid")int orderid){
+    public void orderIsHave(HttpServletRequest request, HttpServletResponse response,@RequestParam("orderid")String orderid){
         try{
             int flag = ordersService.orderIsHave(orderid);
             message = new Message();

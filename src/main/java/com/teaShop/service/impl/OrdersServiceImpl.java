@@ -16,12 +16,12 @@ public class OrdersServiceImpl implements OrdersService{
     public List<TeaOrders> getAll(TeaOrders teaOrders) {
         return dao.getAll(teaOrders);
     }
-    public TeaOrders getOneById(int id){return dao.getOneById(id);}
+    public TeaOrders getOneById(String id){return dao.getOneById(id);}
     public int editOrder(TeaOrders teaOrders){
         return dao.editOrder(teaOrders);
     }
 
-    public int orderIsHave(int orderid){ return dao.orderIsHave(orderid); }
+    public int orderIsHave(String orderid){ return dao.orderIsHave(orderid); }
 
 
 }

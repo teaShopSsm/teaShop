@@ -25,11 +25,11 @@ public interface TeaOrdersDao {
 
     List<TeaIntegral> getIntegralList(Integer userId);
 
-    int orderIsHave(int orderid);
+    int orderIsHave(String orderid);
 
     public List<TeaOrders> getAll(TeaOrders teaOrders);
 
-    public TeaOrders getOneById(int id);
+    public TeaOrders getOneById(String id);
 
     public int editOrder(TeaOrders teaOrders);
     BigDecimal getIntegralSum(Integer userId);

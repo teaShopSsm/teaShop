@@ -34,7 +34,7 @@ public class OrdersController {
     public void getAll(HttpServletRequest request, HttpServletResponse response,
                        @RequestParam(value="pageNumber",defaultValue="1")int pageNumber,
                        @RequestParam(value="pageSize",defaultValue="10")int pageSize,
-                       @RequestParam(value="status",defaultValue = "1")int status){
+                       @RequestParam(value="status",defaultValue = "2")int status){
         try {
             String username = request.getParameter("username");
             TeaOrders teaOrders = new TeaOrders();
@@ -52,7 +52,7 @@ public class OrdersController {
 
     @RequestMapping("/getOneById")
     public void getOneById(HttpServletRequest request, HttpServletResponse response,
-                           @RequestParam(value="id",defaultValue = "0")int id){
+                           @RequestParam(value="id",defaultValue = "")String id){
         try{
             TeaOrders teaOrders = ordersService.getOneById(id);
             message = new Message();
@@ -74,7 +74,7 @@ public class OrdersController {
                                TeaOrders teaOrders){
         try{
             Integer userId = userService.getUserIdByUserName(teaOrders.getUsername());
-            teaOrders.setUserid(userId);
+            teaOrders.setUserid(String.valueOf(userId));
             int flag = ordersService.editOrder(teaOrders);
             message = new Message();
 
