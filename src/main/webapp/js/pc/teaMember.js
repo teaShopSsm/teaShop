@@ -30,7 +30,16 @@ var teaGoodsColumns =
     },{
         field : 'idDeleted',
         title : '状态',
-        align : 'center'
+        align : 'center',
+        formatter : function (value, row, index) {
+            if (row['idDeleted'] === 0) {
+                return '正常';
+            }
+            if (row['status'] === 1) {
+                return '禁用';
+            }
+            return value;
+        }
     },{
         field : 'userId',
         title : '操作',
