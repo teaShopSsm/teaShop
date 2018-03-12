@@ -19,7 +19,9 @@ import java.util.Date;
 
 @Table(name = "tea_orders")
 public class TeaOrders implements Serializable {
-    private int id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private String id;
 
     private String code;
 
@@ -29,7 +31,7 @@ public class TeaOrders implements Serializable {
 
     private String username;
 
-    private int userid;
+    private String userid;
 
     private String telephone;
 
@@ -44,14 +46,14 @@ public class TeaOrders implements Serializable {
     /**
      * @return id
      */
-    public int getId() {
+    public String getId() {
         return id;
     }
 
     /**
      * @param id
      */
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -114,14 +116,14 @@ public class TeaOrders implements Serializable {
     /**
      * @return userid
      */
-    public int getUserid() {
+    public String getUserid() {
         return userid;
     }
 
     /**
      * @param userid
      */
-    public void setUserid(int userid) {
+    public void setUserid(String userid) {
         this.userid = userid;
     }
 
